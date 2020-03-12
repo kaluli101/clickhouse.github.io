@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?47a580e?1583919986">
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?b4cf141?1583975537">
     
     
   </head>
@@ -4019,7 +4019,7 @@
                 <div id="content">
                 
                   <h1 id="data_type-datetime">DateTime<a class="headerlink" href="#data_type-datetime" title="Permanent link">&para;</a></h1>
-<p>Позволяет хранить момент времени, который может быть представлен как календарная дата и время. <code>DateTime</code> позволяет учесть часовой пояс для хранимых значений.</p>
+<p>Позволяет хранить момент времени, который может быть представлен как календарная дата и время.</p>
 <p>Синтаксис:</p>
 <div class="codehilite"><pre><span></span><span class="n">DateTime</span><span class="p">([</span><span class="n">timezone</span><span class="p">])</span>
 </pre></div>
@@ -4028,25 +4028,29 @@
 <p>Диапазон значений: [1970-01-01 00:00:00, 2105-12-31 23:59:59].</p>
 <p>Точность: 1 секунда.</p>
 <h2 id="ispolzovanie">Использование<a class="headerlink" href="#ispolzovanie" title="Permanent link">&para;</a></h2>
-<p>Момент времени сохраняется как Unix timestamp, независимо от часового пояса и переходов на летнее/зимнее время. Дополнительно, <code>DateTime</code> позволяет хранить часовой пояс, который влияет на то, как буду отображаться значения типа <code>DateTime</code> в текстовом виде и как будут парситься входные строки. Список поддержанных временных зон можно найти в <a href="https://www.iana.org/time-zones" rel="external nofollow">IANA Time Zone Database</a>.</p>
+<p>Момент времени сохраняется как <a href="https://ru.wikipedia.org/wiki/Unix-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F" rel="external nofollow">Unix timestamp</a>, независимо от часового пояса и переходов на летнее/зимнее время. Дополнительно, тип <code>DateTime</code> позволяет хранить часовой пояс, единый для всей колонки, который влияет на то, как будут отображаться значения типа <code>DateTime</code> в текстовом виде и как будут парситься значения заданные в виде строк ('2020-01-01 05:00:01'). Часовой пояс не хранится в строках таблицы (выборки), а хранится в метаданных колонки. 
+Список поддерживаемых временных зон можно найти в <a href="https://www.iana.org/time-zones" rel="external nofollow">IANA Time Zone Database</a>.
+Пакет <code>tzdata</code>, содержащий <a href="https://www.iana.org/time-zones" rel="external nofollow">базу данных часовых поясов IANA</a>, должен быть установлен в системе. Используйте команду <code>timedatectl list-timezones</code> для получения списка часовых поясов, известных локальной системе.</p>
 <p>Часовой пояс для столбца типа <code>DateTime</code> можно в явном виде установить при создании таблицы. Если часовой пояс не установлен, то ClickHouse использует значение параметра <a href="../../operations/server_settings/settings/#server_settings-timezone">timezone</a>, установленное в конфигурации сервера или в настройках операционной системы на момент запуска сервера.</p>
 <p>Консольный клиент ClickHouse по умолчанию использует часовой пояс сервера, если для значения <code>DateTime</code> часовой пояс не был задан в явном виде при инициализации типа данных. Чтобы использовать часовой пояс клиента, запустите <a href="../../interfaces/cli/">clickhouse-client</a> с параметром <code>--use_client_time_zone</code>.</p>
-<p>ClickHouse по умолчанию выводит значение в формате <code>YYYY-MM-DD hh:mm:ss</code>. Формат можно поменять с помощь функции <a href="../../query_language/functions/date_time_functions/#formatdatetime">formatDateTime</a>.</p>
+<p>ClickHouse отображает значения типа <code>DateTime</code> в формате <code>YYYY-MM-DD hh:mm:ss</code>. Отображение можно поменять с помощью функции <a href="../../query_language/functions/date_time_functions/#formatdatetime">formatDateTime</a>.</p>
 <p>При вставке данных в ClickHouse, можно использовать различные форматы даты и времени в зависимости от значения настройки <a href="../../operations/settings/settings/#settings-date_time_input_format">date_time_input_format</a>.</p>
 <h2 id="primery">Примеры<a class="headerlink" href="#primery" title="Permanent link">&para;</a></h2>
 <p><strong>1.</strong> Создание таблицы с столбцом типа <code>DateTime</code> и вставка данных в неё:</p>
-<p>CREATE TABLE dt
-(
-    <code>timestamp</code> DateTime('Europe/Moscow'), 
-    <code>event_id</code> UInt8
-)
-ENGINE = TinyLog</p>
-<div class="codehilite"><pre><span></span><span class="err">```sql</span>
-<span class="err">INSERT INTO dt Values (1546300800, 1), (&#39;2019-01-01 00:00:00&#39;, 2)</span>
+<div class="codehilite"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">dt</span>
+<span class="p">(</span>
+    <span class="o">`</span><span class="k">timestamp</span><span class="o">`</span> <span class="n">DateTime</span><span class="p">(</span><span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">),</span> 
+    <span class="o">`</span><span class="n">event_id</span><span class="o">`</span> <span class="n">UInt8</span>
+<span class="p">)</span>
+<span class="n">ENGINE</span> <span class="o">=</span> <span class="n">TinyLog</span><span class="p">;</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span>
+<div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dt</span> <span class="k">Values</span> <span class="p">(</span><span class="mi">1546300800</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;2019-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span><span class="p">;</span>
 </pre></div>
 
 
@@ -4057,7 +4061,11 @@ ENGINE = TinyLog</p>
 </pre></div>
 
 
-<p>Unix timestamp <code>1546300800</code> в часовом поясе <code>Europe/London (UTC+0)</code> представляет время <code>'2019-01-01 00:00:00'</code>, однако столбец <code>timestamp</code> хранит время в часовом поясе <code>Europe/Moscow (UTC+3)</code>, таким образом значение, вставленное в виде Unix timestamp, представляет время <code>2019-01-01 03:00:00</code>.</p>
+<ul>
+<li>При вставке даты-времени как целого числа, оно трактуется как Unix Timestamp (UTC). Unix timestamp <code>1546300800</code> в часовом поясе <code>Europe/London (UTC+0)</code> представляет время <code>'2019-01-01 00:00:00'</code>. Однако, столбец <code>timestamp</code> имеет тип <code>DateTime('Europe/Moscow (UTC+3)')</code>, так что при выводе в виде строки время отобразится как <code>2019-01-01 03:00:00</code>.</li>
+<li>При вставке даты-времени в виде строки, время трактуется соответственно часовому поясу установленному для колонки. <code>'2019-01-01 00:00:00'</code> трактуется как время по Москве (и в базу сохраняется <code>1546290000</code>)</li>
+</ul>
+<p><strong>2.</strong> Фильтрация по значениям даты-времени</p>
 <div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">=</span> <span class="n">toDateTime</span><span class="p">(</span><span class="s1">&#39;2019-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -4068,7 +4076,18 @@ ENGINE = TinyLog</p>
 </pre></div>
 
 
-<p><strong>2.</strong> Получение часового пояса для значения типа <code>DateTime</code>:</p>
+<p>Фильтровать по колонке типа <code>DateTime</code> можно, указывая строковое значение в фильтре <code>WHERE</code>. Конвертация будет выполнена автоматически:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">=</span> <span class="s1">&#39;2019-01-01 00:00:00&#39;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>┌───────────timestamp─┬─event_id─┐
+│ 2019-01-01 03:00:00 │        1 │
+└─────────────────────┴──────────┘
+</pre></div>
+
+
+<p><strong>3.</strong> Получение часового пояса для колонки типа <code>DateTime</code>:</p>
 <div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">toDateTime</span><span class="p">(</span><span class="n">now</span><span class="p">(),</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="k">column</span><span class="p">,</span> <span class="n">toTypeName</span><span class="p">(</span><span class="k">column</span><span class="p">)</span> <span class="k">AS</span> <span class="n">x</span>
 </pre></div>
 
@@ -4076,6 +4095,21 @@ ENGINE = TinyLog</p>
 <div class="codehilite"><pre><span></span>┌──────────────column─┬─x─────────────────────────┐
 │ 2019-10-16 04:12:04 │ DateTime(&#39;Europe/Moscow&#39;) │
 └─────────────────────┴───────────────────────────┘
+</pre></div>
+
+
+<p><strong>4.</strong> Конвертация часовых поясов</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> 
+<span class="n">toDateTime</span><span class="p">(</span><span class="k">timestamp</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">lon_time</span><span class="p">,</span> 
+<span class="n">toDateTime</span><span class="p">(</span><span class="k">timestamp</span><span class="p">,</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mos_time</span>
+<span class="k">FROM</span> <span class="n">dt</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>┌───────────lon_time──┬────────────mos_time─┐
+│ 2019-01-01 00:00:00 │ 2019-01-01 03:00:00 │
+│ 2018-12-31 21:00:00 │ 2019-01-01 00:00:00 │
+└─────────────────────┴─────────────────────┘
 </pre></div>
 
 
@@ -4190,7 +4224,7 @@ ENGINE = TinyLog</p>
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/47a580e37b59400cf9d350623de8e31dcc48041f" rel="external nofollow">47a580e</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/b4cf1410eddd28b849f096b5e9c5f512515e516b" rel="external nofollow">b4cf141</a></span>
 </div>
       
     </div>

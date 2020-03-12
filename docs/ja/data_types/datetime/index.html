@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?47a580e?1583919986">
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?b4cf141?1583975537">
     
     
   </head>
@@ -3991,7 +3991,7 @@
                 <div id="content">
                 
                   <h1 id="data_type-datetime">DateTime<a class="headerlink" href="#data_type-datetime" title="Permanent link">&para;</a></h1>
-<p>Allows to store an instant in time, that can be expressed as a calendar date and a time of a day. <code>DateTime</code> allows to take into account time zones for stored values.</p>
+<p>Allows to store an instant in time, that can be expressed as a calendar date and a time of a day.</p>
 <p>Syntax:</p>
 <div class="codehilite"><pre><span></span><span class="n">DateTime</span><span class="p">([</span><span class="n">timezone</span><span class="p">])</span>
 </pre></div>
@@ -3999,14 +3999,13 @@
 
 <p>Supported range of values: [1970-01-01 00:00:00, 2105-12-31 23:59:59].</p>
 <p>Resolution: 1 second.</p>
-<p>SELECT toDateTime(0)
-FORMAT TSV</p>
-<p>0000-00-00 00:00:00</p>
 <h2 id="usage-remarks">Usage Remarks<a class="headerlink" href="#usage-remarks" title="Permanent link">&para;</a></h2>
-<p>A moment of time is stored as <a href="https://en.wikipedia.org/wiki/Unix_time" rel="external nofollow">Unix timestamp</a>, independently of time zones and daylight savings. Additionally <code>DateTime</code> can store time zone, that affects how <code>DateTime</code> values are displayed in text format and how input strings are parsed for storage. The <code>tzdata</code> package, containing <a href="https://www.iana.org/time-zones" rel="external nofollow">IANA Time Zone Database</a>, should be installed in the system. Use the <code>timedatectl list-timezones</code> command to list timezones known by a local system.</p>
+<p>The point in time is saved as a <a href="https://en.wikipedia.org/wiki/Unix_time" rel="external nofollow">Unix timestamp</a>, regardless of the time zone or daylight saving time. Additionally, the <code>DateTime</code> type can store time zone that is the same for the entire column, that affects how the values of the <code>DateTime</code> type values are displayed in text format and how the values specified as strings are parsed ('2020-01-01 05:00:01'). The time zone is not stored in the rows of the table (or in resultset), but is stored in the column metadata. 
+A list of supported time zones can be found in the <a href="https://www.iana.org/time-zones" rel="external nofollow">IANA Time Zone Database</a>.
+The <code>tzdata</code> package, containing <a href="https://www.iana.org/time-zones" rel="external nofollow">IANA Time Zone Database</a>, should be installed in the system. Use the <code>timedatectl list-timezones</code> command to list timezones known by a local system.</p>
 <p>You can explicitly set a time zone for <code>DateTime</code>-type columns when creating a table. If the time zone isn't set, ClickHouse uses the value of the <a href="../../operations/server_settings/settings/#server_settings-timezone">timezone</a> parameter in the server settings or the operating system settings at the moment of the ClickHouse server start.</p>
 <p>The <a href="../../interfaces/cli/">clickhouse-client</a> applies the server time zone by default if a time zone isn't explicitly set when initializing the data type. To use the client time zone, run <code>clickhouse-client</code> with the <code>--use_client_time_zone</code> parameter.</p>
-<p>ClickHouse outputs values in <code>YYYY-MM-DD hh:mm:ss</code> text format by default. You can change the format with the <a href="../../query_language/functions/date_time_functions/#formatdatetime">formatDateTime</a> function.</p>
+<p>ClickHouse outputs values in <code>YYYY-MM-DD hh:mm:ss</code> text format by default. You can change the output with the <a href="../../query_language/functions/date_time_functions/#formatdatetime">formatDateTime</a> function.</p>
 <p>When inserting data into ClickHouse, you can use different formats of date and time strings, depending on the value of the <a href="../../operations/settings/settings/#settings-date_time_input_format">date_time_input_format</a> setting.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p><strong>1.</strong> Creating a table with a <code>DateTime</code>-type column and inserting data into it:</p>
@@ -4015,15 +4014,15 @@ FORMAT TSV</p>
     <span class="o">`</span><span class="k">timestamp</span><span class="o">`</span> <span class="n">DateTime</span><span class="p">(</span><span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">),</span> 
     <span class="o">`</span><span class="n">event_id</span><span class="o">`</span> <span class="n">UInt8</span>
 <span class="p">)</span>
-<span class="n">ENGINE</span> <span class="o">=</span> <span class="n">TinyLog</span>
+<span class="n">ENGINE</span> <span class="o">=</span> <span class="n">TinyLog</span><span class="p">;</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dt</span> <span class="k">Values</span> <span class="p">(</span><span class="mi">1546300800</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;2019-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">dt</span> <span class="k">Values</span> <span class="p">(</span><span class="mi">1546300800</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;2019-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span><span class="p">;</span>
 </pre></div>
 
 
@@ -4034,7 +4033,11 @@ FORMAT TSV</p>
 </pre></div>
 
 
-<p>Unix timestamp <code>1546300800</code> represents the <code>'2019-01-01 00:00:00'</code> date and time in <code>Europe/London</code> (UTC+0) time zone, but the <code>timestamp</code> column stores values in the <code>Europe/Moscow</code> (UTC+3) timezone, so the value inserted as Unix timestamp is formatted as <code>2019-01-01 03:00:00</code>.</p>
+<ul>
+<li>When inserting datetime as an integer, it is treated as Unix Timestamp (UTC). <code>1546300800</code> represents <code>'2019-01-01 00:00:00'</code> UTC. However, as <code>timestamp</code> column has <code>Europe/Moscow</code> (UTC+3) timezone specified, when outputting as string the value will be shown as <code>'2019-01-01 03:00:00'</code></li>
+<li>When inserting string value as datetime, it is treated as being in column timezone. <code>'2019-01-01 00:00:00'</code> will be treated as being in <code>Europe/Moscow</code> timezone and saved as <code>1546290000</code>.</li>
+</ul>
+<p><strong>2.</strong> Filtering on <code>DateTime</code> values</p>
 <div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">=</span> <span class="n">toDateTime</span><span class="p">(</span><span class="s1">&#39;2019-01-01 00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -4045,7 +4048,18 @@ FORMAT TSV</p>
 </pre></div>
 
 
-<p><strong>2.</strong> Getting a time zone for a <code>DateTime</code>-type value:</p>
+<p><code>DateTime</code> column values can be filtered using a string value in <code>WHERE</code> predicate. It will be converted to <code>DateTime</code> automatically:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dt</span> <span class="k">WHERE</span> <span class="k">timestamp</span> <span class="o">=</span> <span class="s1">&#39;2019-01-01 00:00:00&#39;</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>┌───────────timestamp─┬─event_id─┐
+│ 2019-01-01 03:00:00 │        1 │
+└─────────────────────┴──────────┘
+</pre></div>
+
+
+<p><strong>3.</strong> Getting a time zone for a <code>DateTime</code>-type column:</p>
 <div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">toDateTime</span><span class="p">(</span><span class="n">now</span><span class="p">(),</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="k">column</span><span class="p">,</span> <span class="n">toTypeName</span><span class="p">(</span><span class="k">column</span><span class="p">)</span> <span class="k">AS</span> <span class="n">x</span>
 </pre></div>
 
@@ -4053,6 +4067,21 @@ FORMAT TSV</p>
 <div class="codehilite"><pre><span></span>┌──────────────column─┬─x─────────────────────────┐
 │ 2019-10-16 04:12:04 │ DateTime(&#39;Europe/Moscow&#39;) │
 └─────────────────────┴───────────────────────────┘
+</pre></div>
+
+
+<p><strong>4.</strong> Timezone conversion</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> 
+<span class="n">toDateTime</span><span class="p">(</span><span class="k">timestamp</span><span class="p">,</span> <span class="s1">&#39;Europe/London&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">lon_time</span><span class="p">,</span> 
+<span class="n">toDateTime</span><span class="p">(</span><span class="k">timestamp</span><span class="p">,</span> <span class="s1">&#39;Europe/Moscow&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mos_time</span>
+<span class="k">FROM</span> <span class="n">dt</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>┌───────────lon_time──┬────────────mos_time─┐
+│ 2019-01-01 00:00:00 │ 2019-01-01 03:00:00 │
+│ 2018-12-31 21:00:00 │ 2019-01-01 00:00:00 │
+└─────────────────────┴─────────────────────┘
 </pre></div>
 
 
@@ -4167,7 +4196,7 @@ FORMAT TSV</p>
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/47a580e37b59400cf9d350623de8e31dcc48041f" rel="external nofollow">47a580e</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/b4cf1410eddd28b849f096b5e9c5f512515e516b" rel="external nofollow">b4cf141</a></span>
 </div>
       
     </div>
