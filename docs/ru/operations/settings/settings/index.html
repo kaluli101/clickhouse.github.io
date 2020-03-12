@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?22a89d5?1584027707">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?4ebfbd2?1584029895">
     
     
   </head>
@@ -3939,8 +3939,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#settings-deduplicate_blocks_in_dependent_materialized_views" title="deduplicate_blocks_in_dependent_materialized_views" class="md-nav__link">
-    deduplicate_blocks_in_dependent_materialized_views
+  <a href="#settings-force_deduplicate_childrens" title="force_deduplicate_childrens" class="md-nav__link">
+    force_deduplicate_childrens
   </a>
   
 </li>
@@ -5171,8 +5171,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#settings-deduplicate_blocks_in_dependent_materialized_views" title="deduplicate_blocks_in_dependent_materialized_views" class="md-nav__link">
-    deduplicate_blocks_in_dependent_materialized_views
+  <a href="#settings-force_deduplicate_childrens" title="force_deduplicate_childrens" class="md-nav__link">
+    force_deduplicate_childrens
   </a>
   
 </li>
@@ -5707,7 +5707,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <p>Для запросов, которые быстро завершаются из-за LIMIT-а, имеет смысл выставить max_threads поменьше. Например, если нужное количество записей находится в каждом блоке, то при max_threads = 8 будет считано 8 блоков, хотя достаточно было прочитать один.</p>
 <p>Чем меньше <code>max_threads</code>, тем меньше будет использоваться оперативки.</p>
 <h2 id="settings-max_insert_threads">max_insert_threads<a class="headerlink" href="#settings-max_insert_threads" title="Permanent link">&para;</a></h2>
-<p>Максимальное количество потоков для выполнения запроса <code>INSERT SELECT</code>.</p>
+<p>Максимальное количество потоков для выполнения запроса <code>INSERT SELECT</code>. </p>
 <p>Возможные значения:</p>
 <ul>
 <li>0 (или 1) — <code>INSERT SELECT</code> не выполняется параллельно.</li>
@@ -5911,7 +5911,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 </ul>
 <p>Значение по умолчанию: 1.</p>
 <p>По умолчанию блоки, вставляемые в реплицируемые таблицы оператором <code>INSERT</code>, дедуплицируются (см. <a href="../../table_engines/replication/">Репликация данных</a>.</p>
-<h2 id="settings-deduplicate_blocks_in_dependent_materialized_views">deduplicate_blocks_in_dependent_materialized_views<a class="headerlink" href="#settings-deduplicate_blocks_in_dependent_materialized_views" title="Permanent link">&para;</a></h2>
+<h2 id="settings-force_deduplicate_childrens">force_deduplicate_childrens<a class="headerlink" href="#settings-force_deduplicate_childrens" title="Permanent link">&para;</a></h2>
 <p>Включает и выключает проверку дедупликации для материализованных представлений, которые получают данные из Replicated* таблиц.</p>
 <p>Возможные значения:</p>
 <ul>
@@ -5919,9 +5919,9 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <li>1 — включена.</li>
 </ul>
 <p>Значение по умолчанию: 0.</p>
-<p>По умолчанию проверка дедупликации у материализованных представлений не производится, а наследуюется от Replicated* (основной) таблицы, за которой "следит" материализованное представление.
+<p>По умолчанию проверка дедупликации у материализованных представлений не производится, а наследуюется от Replicated* (основной) таблицы, за которой "следит" материализованное представление. 
 Т.е. если <code>INSERT</code> в основную таблицу д.б. пропущен (сдедуплирован), то автоматически не будет вставки и в материализованные представления. Это имплементировано для того, чтобы работали материализованные представления, которые сильно группируют данные основных <code>INSERT</code>, до такой степени что блоки вставляемые в материализованные представления получаются одинаковыми для разных <code>INSERT</code> в основную таблицу.
-Одновременно это "ломает" идемпотентность вставки в материализованные представления. Т.е. если <code>INSERT</code> был успешен в основную таблицу и неуспешен в таблицу материализованного представления (напр. из-за сетевого сбоя при коммуникации с Zookeeper), клиент получит ошибку и попытается повторить <code>INSERT</code>. Но вставки в материализованные представления произведено не будет, потому что дедупликация сработает на основной таблице. Настройка <code>deduplicate_blocks_in_dependent_materialized_views</code> позволяет это изменить. Т.е. при повторном <code>INSERT</code> будет произведена дедупликация на таблице материализованного представления, и повторный инсерт вставит данные в таблицу материализованного представления, которые не удалось вставить из-за сбоя первого <code>INSERT</code>.</p>
+Одновременно это "ломает" идемпотентность вставки в материализованные представления. Т.е. если <code>INSERT</code> был успешен в основную таблицу и неуспешен в таблицу материализованного представления (напр. из-за сетевого сбоя при коммуникации с Zookeeper), клиент получит ошибку и попытается повторить <code>INSERT</code>. Но вставки в материализованные представления произведено не будет, потому что дедупликация сработает на основной таблице. Настройка <code>force_deduplicate_childrens</code> позволяет это изменить. Т.е. при повторном <code>INSERT</code> будет произведена дедупликация на таблице материализованного представления, и повторный инсерт вставит данные в таблицу материализованного представления, которые не удалось вставить из-за сбоя первого <code>INSERT</code>.</p>
 <h2 id="settings-count_distinct_implementation">count_distinct_implementation<a class="headerlink" href="#settings-count_distinct_implementation" title="Permanent link">&para;</a></h2>
 <p>Задаёт, какая из функций <code>uniq*</code> используется при выполнении конструкции <a href="../../../query_language/agg_functions/reference/#agg_function-count">COUNT(DISTINCT ...)</a>.</p>
 <p>Возможные значения:</p>
@@ -6218,7 +6218,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/22a89d5d8ed6618c66b0bf867c7e3adf95c71f0c" rel="external nofollow">22a89d5</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/4ebfbd2e05bf5d1432dcc7d61bf29be8c05fd33f" rel="external nofollow">4ebfbd2</a></span>
 </div>
       
     </div>

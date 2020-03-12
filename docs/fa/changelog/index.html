@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/custom.css?22a89d5?1584027707">
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css?4ebfbd2?1584029895">
     
     
   </head>
@@ -10832,23 +10832,23 @@
 <h3 id="clickhouse-release-v20-1-6-30-2020-03-05">ClickHouse release v20.1.6.30, 2020-03-05<a class="headerlink" href="#clickhouse-release-v20-1-6-30-2020-03-05" title="Permanent link">&para;</a></h3>
 <h4 id="bug-fix">Bug Fix<a class="headerlink" href="#bug-fix" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Fix data incompatibility when compressed with <code>T64</code> codec.
+<li>Fix data incompatibility when compressed with <code>T64</code> codec. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9039" rel="external nofollow">#9039</a> <a href="https://github.com/abyss7" rel="external nofollow">(abyss7)</a></li>
-<li>Fix order of ranges while reading from MergeTree table in one thread. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/8964" rel="external nofollow">#8964</a>.
+<li>Fix order of ranges while reading from MergeTree table in one thread. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/8964" rel="external nofollow">#8964</a>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9050" rel="external nofollow">#9050</a> <a href="https://github.com/CurtizJ" rel="external nofollow">(CurtizJ)</a></li>
-<li>Fix possible segfault in <code>MergeTreeRangeReader</code>, while executing <code>PREWHERE</code>. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9064" rel="external nofollow">#9064</a>.
+<li>Fix possible segfault in <code>MergeTreeRangeReader</code>, while executing <code>PREWHERE</code>. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9064" rel="external nofollow">#9064</a>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9106" rel="external nofollow">#9106</a> <a href="https://github.com/CurtizJ" rel="external nofollow">(CurtizJ)</a></li>
-<li>Fix <code>reinterpretAsFixedString</code> to return <code>FixedString</code> instead of <code>String</code>.
+<li>Fix <code>reinterpretAsFixedString</code> to return <code>FixedString</code> instead of <code>String</code>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9052" rel="external nofollow">#9052</a> <a href="https://github.com/oandrew" rel="external nofollow">(oandrew)</a></li>
-<li>Fix <code>joinGet</code> with nullable return types. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/8919" rel="external nofollow">#8919</a>
+<li>Fix <code>joinGet</code> with nullable return types. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/8919" rel="external nofollow">#8919</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9014" rel="external nofollow">#9014</a> <a href="https://github.com/amosbird" rel="external nofollow">(amosbird)</a></li>
 <li>Fix fuzz test and incorrect behaviour of bitTestAll/bitTestAny functions.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9143" rel="external nofollow">#9143</a> <a href="https://github.com/alexey-milovidov" rel="external nofollow">(alexey-milovidov)</a></li>
-<li>Fix the behaviour of match and extract functions when haystack has zero bytes. The behaviour was wrong when haystack was constant. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9160" rel="external nofollow">#9160</a>
+<li>Fix the behaviour of match and extract functions when haystack has zero bytes. The behaviour was wrong when haystack was constant. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9160" rel="external nofollow">#9160</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9163" rel="external nofollow">#9163</a> <a href="https://github.com/alexey-milovidov" rel="external nofollow">(alexey-milovidov)</a></li>
-<li>Fixed execution of inversed predicates when non-strictly monotinic functional index is used. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9034" rel="external nofollow">#9034</a>
+<li>Fixed execution of inversed predicates when non-strictly monotinic functional index is used. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9034" rel="external nofollow">#9034</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9223" rel="external nofollow">#9223</a> <a href="https://github.com/Akazz" rel="external nofollow">(Akazz)</a></li>
-<li>Allow to rewrite <code>CROSS</code> to <code>INNER JOIN</code> if there's <code>[NOT] LIKE</code> operator in <code>WHERE</code> section. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9191" rel="external nofollow">#9191</a>
+<li>Allow to rewrite <code>CROSS</code> to <code>INNER JOIN</code> if there's <code>[NOT] LIKE</code> operator in <code>WHERE</code> section. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9191" rel="external nofollow">#9191</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9229" rel="external nofollow">#9229</a> <a href="https://github.com/4ertus2" rel="external nofollow">(4ertus2)</a></li>
 <li>Allow first column(s) in a table with Log engine be an alias.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9231" rel="external nofollow">#9231</a> <a href="https://github.com/abyss7" rel="external nofollow">(abyss7)</a></li>
@@ -10856,36 +10856,36 @@
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9251" rel="external nofollow">#9251</a> <a href="https://github.com/4ertus2" rel="external nofollow">(4ertus2)</a></li>
 <li>Improve <code>ALTER MODIFY/ADD</code> queries logic. Now you cannot <code>ADD</code> column without type, <code>MODIFY</code> default expression doesn't change type of column and <code>MODIFY</code> type doesn't loose default expression value. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/8669" rel="external nofollow">#8669</a>.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9227" rel="external nofollow">#9227</a>  <a href="https://github.com/alesapin" rel="external nofollow">(alesapin)</a></li>
-<li>Fix mutations finalization, when already done mutation can have status is_done=0.
+<li>Fix mutations finalization, when already done mutation can have status is_done=0. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9217" rel="external nofollow">#9217</a> <a href="https://github.com/alesapin" rel="external nofollow">(alesapin)</a></li>
 <li>Support "Processors" pipeline for system.numbers and system.numbers_mt. This also fixes the bug when <code>max_execution_time</code> is not respected.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/7796" rel="external nofollow">#7796</a>  <a href="https://github.com/KochetovNicolai" rel="external nofollow">(KochetovNicolai)</a></li>
-<li>Fix wrong counting of <code>DictCacheKeysRequestedFound</code> metric.
+<li>Fix wrong counting of <code>DictCacheKeysRequestedFound</code> metric. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9411" rel="external nofollow">#9411</a> <a href="https://github.com/nikitamikhaylov" rel="external nofollow">(nikitamikhaylov)</a></li>
-<li>Added a check for storage policy in <code>ATTACH PARTITION FROM</code>, <code>REPLACE PARTITION</code>, <code>MOVE TO TABLE</code> which otherwise could make data of part inaccessible after restart and prevent ClickHouse to start.
+<li>Added a check for storage policy in <code>ATTACH PARTITION FROM</code>, <code>REPLACE PARTITION</code>, <code>MOVE TO TABLE</code> which otherwise could make data of part inaccessible after restart and prevent ClickHouse to start. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9383" rel="external nofollow">#9383</a> <a href="https://github.com/excitoon" rel="external nofollow">(excitoon)</a></li>
-<li>Fixed UBSan report in <code>MergeTreeIndexSet</code>. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9250" rel="external nofollow">#9250</a>
+<li>Fixed UBSan report in <code>MergeTreeIndexSet</code>. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9250" rel="external nofollow">#9250</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9365" rel="external nofollow">#9365</a> <a href="https://github.com/alexey-milovidov" rel="external nofollow">(alexey-milovidov)</a></li>
-<li>Fix possible datarace in BlockIO.
-<a href="https://github.com/ClickHouse/ClickHouse/pull/9356" rel="external nofollow">#9356</a> <a href="https://github.com/KochetovNicolai" rel="external nofollow">(KochetovNicolai)</a></li>
-<li>Support for <code>UInt64</code> numbers that don't fit in Int64 in JSON-related functions. Update <code>SIMDJSON</code> to master. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9209" rel="external nofollow">#9209</a>
+<li>Fix possible datarace in BlockIO. 
+<a href="https://github.com/ClickHouse/ClickHouse/pull/9356" rel="external nofollow">#9356</a> <a href="https://github.com/KochetovNicolai" rel="external nofollow">(KochetovNicolai)</a> </li>
+<li>Support for <code>UInt64</code> numbers that don't fit in Int64 in JSON-related functions. Update <code>SIMDJSON</code> to master. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9209" rel="external nofollow">#9209</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9344" rel="external nofollow">#9344</a> <a href="https://github.com/alexey-milovidov" rel="external nofollow">(alexey-milovidov)</a></li>
-<li>Fix the issue when the amount of free space is not calculated correctly if the data directory is mounted to a separate device. For default disk calculate the free space from data subdirectory. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/7441" rel="external nofollow">#7441</a>
+<li>Fix the issue when the amount of free space is not calculated correctly if the data directory is mounted to a separate device. For default disk calculate the free space from data subdirectory. This fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/7441" rel="external nofollow">#7441</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9257" rel="external nofollow">#9257</a> <a href="https://github.com/millb" rel="external nofollow">(millb)</a></li>
 <li>Fix the issue when TLS connections may fail with the message <code>OpenSSL SSL_read: error:14094438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error and SSL Exception: error:2400006E:random number generator::error retrieving entropy.</code> Update OpenSSL to upstream master.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/8956" rel="external nofollow">#8956</a> <a href="https://github.com/alexey-milovidov" rel="external nofollow">(alexey-milovidov)</a></li>
-<li>When executing <code>CREATE</code> query, fold constant expressions in storage engine arguments. Replace empty database name with current database. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/6508" rel="external nofollow">#6508</a>, <a href="https://github.com/ClickHouse/ClickHouse/issues/3492" rel="external nofollow">#3492</a>. Also fix check for local address in ClickHouseDictionarySource.
+<li>When executing <code>CREATE</code> query, fold constant expressions in storage engine arguments. Replace empty database name with current database. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/6508" rel="external nofollow">#6508</a>, <a href="https://github.com/ClickHouse/ClickHouse/issues/3492" rel="external nofollow">#3492</a>. Also fix check for local address in ClickHouseDictionarySource. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9262" rel="external nofollow">#9262</a> <a href="https://github.com/tavplubix" rel="external nofollow">(tabplubix)</a></li>
 <li>Fix segfault in <code>StorageMerge</code>, which can happen when reading from StorageFile.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9387" rel="external nofollow">#9387</a> <a href="https://github.com/tavplubix" rel="external nofollow">(tabplubix)</a></li>
-<li>Prevent losing data in <code>Kafka</code> in rare cases when exception happens after reading suffix but before commit. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9378" rel="external nofollow">#9378</a>. Related: <a href="https://github.com/ClickHouse/ClickHouse/issues/7175" rel="external nofollow">#7175</a>
+<li>Prevent losing data in <code>Kafka</code> in rare cases when exception happens after reading suffix but before commit. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9378" rel="external nofollow">#9378</a>. Related: <a href="https://github.com/ClickHouse/ClickHouse/issues/7175" rel="external nofollow">#7175</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9507" rel="external nofollow">#9507</a> <a href="https://github.com/filimonov" rel="external nofollow">(filimonov)</a></li>
-<li>Fix bug leading to server termination when trying to use / drop <code>Kafka</code> table created with wrong parameters. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9494" rel="external nofollow">#9494</a>. Incorporates <a href="https://github.com/ClickHouse/ClickHouse/issues/9507" rel="external nofollow">#9507</a>.
+<li>Fix bug leading to server termination when trying to use / drop <code>Kafka</code> table created with wrong parameters. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9494" rel="external nofollow">#9494</a>. Incorporates <a href="https://github.com/ClickHouse/ClickHouse/issues/9507" rel="external nofollow">#9507</a>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9513" rel="external nofollow">#9513</a> <a href="https://github.com/filimonov" rel="external nofollow">(filimonov)</a></li>
 </ul>
 <h4 id="new-feature">New Feature<a class="headerlink" href="#new-feature" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Add <code>deduplicate_blocks_in_dependent_materialized_views</code> option to control the behaviour of idempotent inserts into tables with materialized views. This new feature was added to the bugfix release by a special request from Altinity.
+<li>Add <code>force_deduplicate_children</code> option to reduce dataloss chance on insert into table with Materialized View. This new feature was added to the bugfix release by a special request from Altinity.
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9070" rel="external nofollow">#9070</a> <a href="https://github.com/urykhy" rel="external nofollow">(urykhy)</a></li>
 </ul>
 <h3 id="clickhouse-release-v20-1-2-4-2020-01-22">ClickHouse release v20.1.2.4, 2020-01-22<a class="headerlink" href="#clickhouse-release-v20-1-2-4-2020-01-22" title="Permanent link">&para;</a></h3>
@@ -11317,17 +11317,17 @@ next request would interpret this info as the beginning of the next query causin
 <ul>
 <li>Fix distributed subqueries incompatibility with older CH versions. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/7851" rel="external nofollow">#7851</a>
 <a href="https://github.com/tavplubix" rel="external nofollow">(tabplubix)</a></li>
-<li>When executing <code>CREATE</code> query, fold constant expressions in storage engine arguments. Replace empty database name with current database. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/6508" rel="external nofollow">#6508</a>, <a href="https://github.com/ClickHouse/ClickHouse/issues/3492" rel="external nofollow">#3492</a>. Also fix check for local address in <code>ClickHouseDictionarySource</code>.
+<li>When executing <code>CREATE</code> query, fold constant expressions in storage engine arguments. Replace empty database name with current database. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/6508" rel="external nofollow">#6508</a>, <a href="https://github.com/ClickHouse/ClickHouse/issues/3492" rel="external nofollow">#3492</a>. Also fix check for local address in <code>ClickHouseDictionarySource</code>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9262" rel="external nofollow">#9262</a> <a href="https://github.com/tavplubix" rel="external nofollow">(tabplubix)</a></li>
-<li>Now background merges in <code>*MergeTree</code> table engines family preserve storage policy volume order more accurately.
+<li>Now background merges in <code>*MergeTree</code> table engines family preserve storage policy volume order more accurately. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/8549" rel="external nofollow">#8549</a> (<a href="https://github.com/excitoon" rel="external nofollow">Vladimir Chebotarev</a>)</li>
-<li>Prevent losing data in <code>Kafka</code> in rare cases when exception happens after reading suffix but before commit. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9378" rel="external nofollow">#9378</a>. Related: <a href="https://github.com/ClickHouse/ClickHouse/issues/7175" rel="external nofollow">#7175</a>
+<li>Prevent losing data in <code>Kafka</code> in rare cases when exception happens after reading suffix but before commit. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9378" rel="external nofollow">#9378</a>. Related: <a href="https://github.com/ClickHouse/ClickHouse/issues/7175" rel="external nofollow">#7175</a> 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9507" rel="external nofollow">#9507</a> <a href="https://github.com/filimonov" rel="external nofollow">(filimonov)</a></li>
-<li>Fix bug leading to server termination when trying to use / drop <code>Kafka</code> table created with wrong parameters. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9494" rel="external nofollow">#9494</a>. Incorporates <a href="https://github.com/ClickHouse/ClickHouse/issues/9507" rel="external nofollow">#9507</a>.
+<li>Fix bug leading to server termination when trying to use / drop <code>Kafka</code> table created with wrong parameters. Fixes <a href="https://github.com/ClickHouse/ClickHouse/issues/9494" rel="external nofollow">#9494</a>. Incorporates <a href="https://github.com/ClickHouse/ClickHouse/issues/9507" rel="external nofollow">#9507</a>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9513" rel="external nofollow">#9513</a> <a href="https://github.com/filimonov" rel="external nofollow">(filimonov)</a></li>
-<li>Allow using <code>MaterializedView</code> with subqueries above <code>Kafka</code> tables.
+<li>Allow using <code>MaterializedView</code> with subqueries above <code>Kafka</code> tables. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/8197" rel="external nofollow">#8197</a> (<a href="https://github.com/filimonov" rel="external nofollow">filimonov</a>)</li>
-<li>Add <code>force_deduplicate_childrens</code> option to reduce dataloss chance on insert into table with <code>Materialized View</code>.
+<li>Add <code>force_deduplicate_childrens</code> option to reduce dataloss chance on insert into table with <code>Materialized View</code>. 
 <a href="https://github.com/ClickHouse/ClickHouse/pull/9070" rel="external nofollow">#9070</a> <a href="https://github.com/urykhy" rel="external nofollow">(urykhy)</a></li>
 </ul>
 <h3 id="clickhouse-release-v19-16-2-2-2019-10-30">ClickHouse release v19.16.2.2, 2019-10-30<a class="headerlink" href="#clickhouse-release-v19-16-2-2-2019-10-30" title="Permanent link">&para;</a></h3>
@@ -14552,7 +14552,7 @@ The expression must be a chain of equalities joined by the AND operator. Each si
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/22a89d5d8ed6618c66b0bf867c7e3adf95c71f0c" rel="external nofollow">22a89d5</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/4ebfbd2e05bf5d1432dcc7d61bf29be8c05fd33f" rel="external nofollow">4ebfbd2</a></span>
 </div>
       
     </div>
