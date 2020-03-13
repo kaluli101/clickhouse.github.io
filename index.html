@@ -2,449 +2,577 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>ClickHouse — open source distributed column-oriented DBMS</title>
+<title>ClickHouse — open source distributed column-oriented DBMS</title>
 
-    <link rel="shortcut icon" href="favicon.ico"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
 
-    <meta property="og:title" content="ClickHouse DBMS"/>
-    <meta property="og:description"
-          content="ClickHouse is an open source column-oriented database management system that allows generating analytical data reports in real time using SQL queries."/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://clickhouse.tech"/>
-    <meta property="og:image" content="https://clickhouse.tech/images/logo.png"/>
+<meta property="og:title" content="ClickHouse DBMS"/>
+<meta property="og:description"
+      content="ClickHouse is an open source column-oriented database management system that allows generating analytical data reports in real time using SQL queries."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://clickhouse.tech"/>
+<meta property="og:image" content="https://clickhouse.tech/images/logo.png"/>
 
-    <meta property="twitter:title" content="ClickHouse DBMS"/>
+<meta property="twitter:title" content="ClickHouse DBMS"/>
 
-    <meta name="description"
-          content="ClickHouse is an open source distributed column-oriented database management system that allows generating analytical data reports in real time using SQL queries. Сreated by Yandex ClickHouse manages extremely large volumes of data in a stable and sustainable manner."/>
-    <meta name="keywords"
-          content="ClickHouse, DBMS, OLAP, relational, analytics, analytical, big data, open-source, SQL, web-analytics" />
+<meta name="description"
+      content="ClickHouse is an open source distributed column-oriented database management system that allows generating analytical data reports in real time using SQL queries. Сreated by Yandex ClickHouse manages extremely large volumes of data in a stable and sustainable manner."/>
+<meta name="keywords"
+      content="ClickHouse, DBMS, OLAP, relational, analytics, analytical, big data, open-source, SQL, web-analytics" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="css/base.css?d4cc635" media="all" rel="stylesheet" />
 
-    <link href="index.css?c5244ab" media="all" rel="stylesheet" />
+
+
 </head>
 <body>
-<div id="navbar">
-    <div id="navbar-inner">
-        <div id="top-menu" class="desktop-only">
-            <a class="menu_item" href="#quick-start">Quick Start</a>
-            <a class="menu_item" href="#performance">Performance</a>
-            <a class="menu_item" href="docs/en/">Documentation</a>
-            <a class="menu_item" href="https://clickhouse.yandex/blog/en/">Blog</a>
-            <a class="menu_item" href="#contacts">Contacts</a>
-        </div>
 
-        <a id="logo" href="#">
-            <h1 id="main-title">
-                <svg id="title-logo" xmlns="http://www.w3.org/2000/svg" width="48" height="44" viewBox="0 0 9 8">
-                    <path class="red" d="M0,7 h1 v1 h-1 z"></path>
-                    <path class="orange" d="M0,0 h1 v7 h-1 z"></path>
-                    <path class="orange" d="M2,0 h1 v8 h-1 z"></path>
-                    <path class="orange" d="M4,0 h1 v8 h-1 z"></path>
-                    <path class="orange" d="M6,0 h1 v8 h-1 z"></path>
-                    <path class="orange" d="M8,3.25 h1 v1.5 h-1 z"></path>
-                </svg>
 
-                <img id="logo-text" src="images/clickhouse-black.svg?c5244ab" alt="ClickHouse" />
-            </h1>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img id="logo-icon" src="images/logo.svg" />
+            <img id="logo-text" src="images/clickhouse-black.svg" alt="ClickHouse" />
         </a>
-    </div>
-</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div id="hero">
-    <div class="page">
-        <div class="block-70">
-            <p id="short-description">ClickHouse is an <a href="https://github.com/ClickHouse/ClickHouse" rel="external nofollow" target="_blank" class="orange">open&nbsp;source</a> column-oriented
-                database management system
-                capable of <span class="orange">real&nbsp;time</span> generation of analytical data reports using <span
-                        class="orange">SQL</span>&nbsp;queries.</p>
-            <a id="call_to_action" href="#quick-start">
-                Quick Start
-            </a>
-        </div>
-        <div class="block-30">
-            <ul id="index_ul" class="dashed">
-                <li>
-                    <a class="index_item" href="#blazing-fast">Blazing Fast</a>
+        <div class="collapse navbar-collapse" id="navbar-toggle">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0 justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#quick-start">Quick start</a>
                 </li>
-                <li>
-                    <a class="index_item" href="#linearly-scalable">Linearly Scalable</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="docs/en/">Documentation</a>
                 </li>
-                <li>
-                    <a class="index_item" href="#hardware-efficient">Hardware Efficient</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://clickhouse.yandex/blog/en/"
+                       rel="external nofollow">Blog</a>
                 </li>
-                <li>
-                    <a class="index_item" href="#fault-tolerant">Fault Tolerant</a>
-                </li>
-                <li>
-                    <a class="index_item" href="#key-features">Feature Rich</a>
-                </li>
-                <li>
-                    <a class="index_item" href="#highly-reliable">Highly Reliable</a>
-                </li>
-                <li>
-                    <a class="index_item" href="#simple-and-handy">Simple and Handy</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacts">Contacts</a>
                 </li>
             </ul>
         </div>
-        <div class="clear"></div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 py-5">
+            <h1 class="display-5">ClickHouse is a fast <a href="https://github.com/ClickHouse/ClickHouse" rel="external nofollow" target="_blank">open-source</a> database management system</h1>
+            <p class="lead">It is column-oriented and allows to generate analytical reports using SQL queries in real-time.</p>
+            <div class="row lead my-3">
+                <div class="col-md mb-0 mb-md-1">
+                    <ul class="list-unstyled mb-0 mb-md-1">
+                        <li><a class="stealth-link" href="#blazing-fast">✓ Blazing fast</a></li>
+                        <li><a class="stealth-link" href="#linearly-scalable">✓ Linearly scalable</a></li>
+                        <li><a class="stealth-link" href="#feature-rich">✓ Feature rich</a></li>
+                    </ul>
+                </div>
+                <div class="col-md">
+                    <ul class="list-unstyled">
+                        <li><a class="stealth-link" href="#hardware-efficient">✓ Hardware efficient</a></li>
+                        <li><a class="stealth-link" href="#fault-tolerant">✓ Fault tolerant</a></li>
+                        <li><a class="stealth-link" href="#highly-reliable">✓ Highly reliable</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row lead">
+
+                <div class="col-lg pb-2">
+                    <a href="#quick-start" class="btn btn-lg btn-yellow w-100 mb-3" role="button">Quick start</a>
+
+                </div>
+                <div class="col-lg pb-2">
+
+                    <a href="docs/en/" class="btn btn-lg btn-outline-orange w-100" role="button">Documentation</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 py-5 px-0">
+            <img src="images/index/intro.svg" alt="ClickHouse is capable of generating analytical data reports in real time" class="my-3" />
+        </div>
     </div>
 </div>
-<div id="announcement" class="colored-block">
-     <div class="page">
+
+<div id="events" class="bg-light my-0">
+     <div class="container py-5">
+         
+            <h2>Upcoming Events</h2>
+            <ul class="lead list-unstyled">
+            
+                <li>
+                    <a class="text-reset" rel="external nofollow" target="_blank"
+                    href="https://2020.codefest.ru/lecture/1628">
+                    <span class="text-orange">March 28, 2020</span>&nbsp;
+                    ClickHouse Workshop in Novosibirsk
+                 </a>
+                </li>
+            
+                <li>
+                    <a class="text-reset" rel="external nofollow" target="_blank"
+                    href="https://www.highload.ru/spb/2020/abstracts/6647">
+                    <span class="text-orange">April 6, 2020</span>&nbsp;
+                    Talks on Saint HighLoad++ in St. Petersburg
+                 </a>
+                </li>
+            
+                <li>
+                    <a class="text-reset" rel="external nofollow" target="_blank"
+                    href="https://events.yandex.ru/events/otkrytyj-kod-v-yandek-28-03-2020">
+                    <span class="text-orange">TBD date</span>&nbsp;
+                    Yandex C++ Open-Source Sprints in Moscow
+                 </a>
+                </li>
+            
+            </ul>
+         
      </div>
 </div>
-<div class="page">
-    <h2 id="slogan">ClickHouse. Just makes you think faster.</h2>
 
-    <div class="block-70">
-        <ul class="dashed">
-            <li>Run more queries in the same amount of time</li>
-            <li>Test more hypotheses</li>
-            <li>Slice and dice your data in many more new ways</li>
-            <li>Look at your data from new angles</li>
-            <li>Discover new dimensions</li>
-        </ul>
-    </div>
-    <div class="block-30">
-        <svg id="placeholder" class="desktop-only" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <rect id="path-1" x="0" y="16" width="60" height="60" rx="1"></rect>
-                <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="60" height="60" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <rect id="path-3" x="16" y="0" width="60" height="60" rx="1"></rect>
-                <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="60" height="60" fill="white">
-                    <use xlink:href="#path-3"></use>
-                </mask>
-                <rect id="path-5" x="0" y="8" width="20" height="20" rx="1"></rect>
-                <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20" height="20" fill="white">
-                    <use xlink:href="#path-5"></use>
-                </mask>
-                <rect id="path-7" x="8" y="0" width="20" height="20" rx="1"></rect>
-                <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20" height="20" fill="white">
-                    <use xlink:href="#path-7"></use>
-                </mask>
-            </defs>
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
-                <g id="Clickhouse_2" transform="translate(-558.000000, -1293.000000)">
-                    <g id="Group-11" transform="translate(558.000000, 1293.000000)">
-                        <use stroke="#FFCC00" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
-                        <use stroke="#FFCC00" mask="url(#mask-4)" stroke-width="4" xlink:href="#path-3"></use>
-                        <path d="M0.989013672,17.017334 L16.8210449,1.16748047" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M59.0788574,74.9973145 L74.7983398,59.2650146" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M59.1091309,17.1687012 L74.9368896,1.10351562" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M1.07910156,17.2504883 L26.0395508,33.4033203" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M17.2602539,1.18457031 L34.0175781,25.1796875" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M51.2958984,25.4736328 L58.8277588,17" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M1.01904297,50.942627 L25.9216309,75.064209" stroke="#FFCC00" stroke-width="2" transform="translate(13.470337, 63.003418) scale(-1, 1) translate(-13.470337, -63.003418) "></path>
-                        <path d="M44.1804199,51.300293 L58.9638672,75.010498" stroke="#FFCC00" stroke-width="2"></path>
-                        <path d="M52.0131836,43.1345215 L75.0227051,58.9299316" stroke="#FFCC00" stroke-width="2"></path>
-                        <g id="Group-3" transform="translate(25.000000, 24.000000)" stroke="#444444">
-                            <use mask="url(#mask-6)" stroke-width="4" xlink:href="#path-5"></use>
-                            <use mask="url(#mask-8)" stroke-width="4" xlink:href="#path-7"></use>
-                            <path d="M19.2587891,1.08825684 L26.7729492,8.8046875" stroke-width="2" transform="translate(23.015869, 4.946472) scale(-1, 1) translate(-23.015869, -4.946472) "></path>
-                            <path d="M1.05773926,1.04125977 L8.82080078,8.9654541" stroke-width="2" transform="translate(4.939270, 5.003357) scale(-1, 1) translate(-4.939270, -5.003357) "></path>
-                            <path d="M1.12487793,18.887207 L9.26220703,26.8897705" stroke-width="2" transform="translate(5.193542, 22.888489) scale(-1, 1) translate(-5.193542, -22.888489) "></path>
-                            <path d="M19.038208,19.1968994 L26.9085693,26.9760742" stroke-width="2" transform="translate(22.973389, 23.086487) scale(-1, 1) translate(-22.973389, -23.086487) "></path>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
+<div id="blazing-fast" class="bg-dark my-0">
+     <div class="container text-light py-5">
+         <div class="row text-center">
+             <h2 class="display-5 mx-auto mb-3">ClickHouse works 100-1000x faster than traditional approaches</h2>
+             <p class="lead">ClickHouse's performance <a href="benchmark.html">exceeds</a> comparable column-oriented DBMS currently available
+            on the market. It processes hundreds of millions to more than a billion rows and tens of gigabytes of data per single server per second.</p>
 
-    </div>
-    <div class="clear"></div>
+             <a href="benchmark.html" class="btn btn-lg btn-yellow mt-3 mx-auto" role="button">Detailed comparison</a>
+         </div>
+         <div class="row mt-5">
+             <h2 class="mb-3">Independent benchmarks</h2>
+         </div>
+         <div class="row">
+             <div class="col-lg p-0">
+
+                 <ul class="list-unstyled">
+                     <li class="mb-3"><a href="https://www.percona.com/blog/2017/02/13/clickhouse-new-opensource-columnar-database/"
+                            rel="external nofollow" target="_blank" class="stealth-link">ClickHouse: New Open Source Columnar Database <div class="text-yellow">Percona</div></a></li>
+                    <li class="mb-3"><a href="https://www.percona.com/blog/2017/03/17/column-store-database-benchmarks-mariadb-columnstore-vs-clickhouse-vs-apache-spark/"
+                           title="MariaDB ColumnStore vs. Clickhouse vs. Apache Spark"
+                           rel="external nofollow" target="_blank" class="stealth-link">Column Store Database Benchmarks <div class="text-yellow">Percona</div></a></li>
+                    <li class="mb-3"><a href="http://tech.marksblogg.com/billion-nyc-taxi-clickhouse.html"
+                           rel="external nofollow" target="_blank" class="stealth-link">1.1 Billion Taxi Rides on ClickHouse & an Intel Core i5 <div class="text-yellow">Mark Litwintschik</div></a></li>
+                    <li class="mb-3"><a href="https://tech.marksblogg.com/billion-nyc-taxi-rides-clickhouse-cluster.html"
+                           rel="external nofollow" target="_blank" class="stealth-link">1.1 Billion Taxi Rides: 108-core ClickHouse Cluster  <div class="text-yellow">Mark Litwintschik</div></a></li>
+                 </ul>
+             </div>
+             <div class="col-lg p-0">
+                 <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <a href="https://www.altinity.com/blog/2017/6/20/clickhouse-vs-redshift"
+                           rel="external nofollow" target="_blank" class="stealth-link">ClickHouse vs Amazon RedShift Benchmark  <div class="text-yellow">Altinity</div></a></li>
+                    <li class="mb-3"><a href="https://carto.com/blog/inside/geospatial-processing-with-clickhouse"
+                           rel="external nofollow" target="_blank" class="stealth-link">Geospatial processing with Clickhouse  <div class="text-yellow">Carto</div></a></li>
+                    <li class="mb-3"><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fwww.clickhouse.com.cn%2Ftopic%2F5a72e8ab9d28dfde2ddc5ea2F&amp;lang=zh-en"
+                                        rel="external nofollow" target="_blank" class="stealth-link">ClickHouse and Vertica comparison <div><span class="text-yellow">zhtsh</span> <span class="text-muted">(machine translation from Chinese)</span></div></a></li>
+                    <li class="mb-3"><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fverynull.com%2F2016%2F08%2F22%2Finfinidb%E4%B8%8Eclickhouse%E5%AF%B9%E6%AF%94%2F&amp;lang=zh-en"
+                                        rel="external nofollow" target="_blank" class="stealth-link">ClickHouse and InfiniDB comparison<div><span class="text-yellow">RamboLau</span> <span class="text-muted">(machine translation from Chinese)</span></div></a></li>
+                 </ul>
+             </div>
+         </div>
 
 
-    <h2 id="blazing-fast">Blazing Fast</h2>
-
-    <p>ClickHouse's performance <a href="benchmark.html">exceeds</a> comparable column-oriented DBMS currently available
-        on the market. It&nbsp;processes hundreds of millions to more than a billion rows and tens of gigabytes of data
-        per single server per second.</p>
-
-    <p>ClickHouse uses all available hardware to its full potential to process each query as fast as possible. The peak
-        processing performance for a single query <span class="grey">(after decompression, only used columns)</span>
-        stands at more than 2&nbsp;terabytes per second.</p>
+     </div>
 </div>
-<div id="performance" class="colored-block">
-    <div class="page">
-        <h2>ClickHouse works 100-1,000x faster than traditional approaches</h2>
-        <p>In contrast to common data management methods, where vast amounts of raw data in its native format are available as
-            a "data lake" for any given query,
-            ClickHouse offers instant results in most cases: the data is processed faster than it&nbsp;takes
-            to create a query. Follow the link below to see detailed benchmarks by Yandex of ClickHouse in comparison
-            with other database management systems. Also there are some links on third-party benchmarks in the following section.</p>
-        <a id="benchmark_learn_more" href="benchmark.html">
-            Learn more
-        </a>
-        <div class="clear"></div>
-    </div>
-</div>
-
-<div class="page">
-
-    <h2 id="independent-benchmarks">Independent Benchmarks</h2>
-
-    <ul class="dashed">
-        <li><a href="https://www.percona.com/blog/2017/02/13/clickhouse-new-opensource-columnar-database/"
-               rel="external nofollow" target="_blank">ClickHouse: New Open Source Columnar Database</a> by Percona</li>
-        <li><a href="https://www.percona.com/blog/2017/03/17/column-store-database-benchmarks-mariadb-columnstore-vs-clickhouse-vs-apache-spark/"
-               title="MariaDB ColumnStore vs. Clickhouse vs. Apache Spark"
-               rel="external nofollow" target="_blank">Column Store Database Benchmarks</a> by Percona</li>
-        <li><a href="http://tech.marksblogg.com/billion-nyc-taxi-clickhouse.html"
-               rel="external nofollow" target="_blank">1.1 Billion Taxi Rides on ClickHouse & an Intel Core i5</a> by Mark Litwintschik</li>
-        <li><a href="https://tech.marksblogg.com/billion-nyc-taxi-rides-clickhouse-cluster.html"
-               rel="external nofollow" target="_blank">1.1 Billion Taxi Rides: 108-core ClickHouse Cluster</a> by Mark Litwintschik</li>
-        <li><a href="https://www.altinity.com/blog/2017/6/20/clickhouse-vs-redshift"
-               rel="external nofollow" target="_blank">ClickHouse vs Amazon RedShift Benchmark</a> by Altinity</li>
-        <li><a href="https://carto.com/blog/inside/geospatial-processing-with-clickhouse"
-               rel="external nofollow" target="_blank">Geospatial processing with Clickhouse</a> by Carto</li>
-        <li><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fwww.clickhouse.com.cn%2Ftopic%2F5a72e8ab9d28dfde2ddc5ea2F&amp;lang=zh-en"
-               rel="external nofollow" target="_blank">ClickHouse and Vertica comparison</a> by zhtsh <span class="grey">(machine translation from Chinese)</span></li>
-        <li><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fverynull.com%2F2016%2F08%2F22%2Finfinidb%E4%B8%8Eclickhouse%E5%AF%B9%E6%AF%94%2F&amp;lang=zh-en"
-               rel="external nofollow" target="_blank">ClickHouse and InfiniDB comparison</a> by RamboLau <span class="grey">(machine translation from Chinese)</span></li>
-    </ul>
-
-    <h2 id="linearly-scalable">Linearly Scalable</h2>
-
-    <p>ClickHouse allows companies to add servers to their clusters when necessary without investing time or money into
-        any additional DBMS modification. The system has been successfully serving
-        <a href="https://metrica.yandex.com/" rel="external nofollow">Yandex.Metrica</a>,
-        while the count of servers in it's main production cluster have grown from 60 to 394 in two years,
-        which are by the way located in six geographically distributed datacenters.</p>
-
-    <p>ClickHouse scales well both vertically and horizontally. ClickHouse is easily adaptable to perform either on
-        cluster with hundreds of nodes, or on a single server or even on a tiny virtual machine. Currently there are
-        installations with more than two trillion rows per single node,
-        as well as installations with 100Tb of storage per single node.</p>
-
-
-    <h2 id="hardware-efficient">Hardware Efficient</h2>
-
-    <p>ClickHouse processes typical analytical queries two to three orders of magnitude faster than traditional
-        row-oriented systems with the same available I/O throughput. The system's columnar storage format allows fitting
-        more hot data in RAM, which leads to a shorter response times.</p>
-
-    <p>ClickHouse allows to minimize the number of seeks for range queries, which increases efficiency of using rotational
-        disk drives, as it&nbsp;maintains locality of reference for continually stored data.</p>
-
-    <p>ClickHouse is CPU efficient because of it's vectorized query execution involving relevant processor instructions
-        and runtime code generation.</p>
-
-    <p>By minimizing data transfers for most types of queries, ClickHouse enables companies to manage their data and
-        create reports without using specialized networks that are aimed at high-performance computing.</p>
-
-    <h2 id="fault-tolerant">Fault Tolerant</h2>
-
-    <p>ClickHouse supports multi-master asynchronous replication and can be deployed across multiple datacenters.
-        Downtime of a single node or the whole datacenter won't affect the system's availability for both reads and
-        writes.
-        Distributed reads are automatically balanced to live replicas to avoid increasing latency. Replicated data
-        are synchronized automatically or semi-automatically after server downtime.</p>
+<div>
+    <div class="container my-5 py-3">
+        <div class="row mb-5">
+            <div class="col-lg text-center">
+                <h2>Why ClickHouse might be the right choice for you?</h2>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-1">
+                <img src="images/index/flash.svg" alt="Blazing fast" />
+            </div>
+            <div class="col-lg-5">
+                <h3>Blazing fast</h3>
+                <p>ClickHouse uses all available hardware to its full potential to process each query as fast as possible. Peak
+            processing performance for a single query stands at more than 2&nbsp;terabytes per second <span class="text-muted">(after decompression, only used columns)</span>. In distributed setup  reads are automatically balanced among healthy replicas to avoid increasing latency.</p>
+            </div>
+            <div class="col-lg-1">
+                <img src="images/index/safe.svg" alt="Fault tolerant" />
+            </div>
+            <div class="col-lg-5">
+                <h3 id="fault-tolerant">Fault tolerant</h3>
+                <p>ClickHouse supports multi-master asynchronous replication and can be deployed across multiple datacenters. All nodes are equal, which allows to avoid having single points of failure. Downtime of a single node or the whole datacenter won't affect the system's availability for both reads and writes.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="images/index/scale.svg" alt="Linearly scalable" />
+            </div>
+            <div class="col-lg-5">
+                <h3 id="linearly-scalable">Linearly scalable</h3>
+                <p>ClickHouse scales well both vertically and horizontally. ClickHouse is easily adaptable to perform either on
+            cluster with hundreds or thousands of nodes, or on a single server or even on a tiny virtual machine. Currently there are installations with more multiple trillion rows or hundreds of terabytes of data per single node.</p>
+            </div>
+            <div class="col-lg-1">
+                <img src="images/index/heart.svg" alt="Easy to use" />
+            </div>
+            <div class="col-lg-5">
+                <h3>Easy to use</h3>
+                <p>ClickHouse is simple and works out-of-the-box. It streamlines all your data processing: ingest all your structured data into the system and it becomes instantly available for building reports. SQL dialect allows to express the desired result without involving any custom non-standard API that could be found in some DBMS.</p>
+            </div>
+        </div>
     </div>
 </div>
+<div class="bg-light py-5 my-5">
+    <div class="container text-center">
+        <h2 id="success-stories">Success stories</h2>
+        <div class="row">
+            <div class="col-lg-4 py-3">
+                <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/" class="stealth-link" rel="externa nofollow" target="_blank">
+                    <div class="card py-3 dots-lb">
+                        <div class="card-body">
+                            <h4 class="card-title">HTTP and DNS analytics</h4>
+                            <p class="card-text text-muted">by CloudFlare</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 py-3">
+                <a href="docs/en/introduction/ya_metrika_task/" class="stealth-link">
+                    <div class="card py-3 dots-cc">
+                        <div class="card-body">
+                            <h4 class="card-title">Yandex Metrica</h4>
+                            <p class="card-text text-muted">The original usecase</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 py-3">
+                <a href="https://www.slideshare.net/glebus/using-clickhouse-for-experimentation-104247173" class="stealth-link" rel="external nofollow" target="_blank">
+                    <div class="card py-3 dots-rb">
+                        <div class="card-body">
+                            <h4 class="card-title">Experimentation</h4>
+                            <p class="card-text text-muted">at Spotify</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 py-3">
+                <a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fwww.jianshu.com%2Fp%2F4c86a2478cca&amp;lang=zh-en" class="stealth-link" rel="external nofollow" target="_blank">
+                    <div class="card py-3 dots-rb">
+                        <div class="card-body">
+                            <h4 class="card-title">OLAP contest victory</h4>
+                            <p class="card-text text-muted">by Analysys</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 py-3">
+                <a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fsouslecapot.net%2F2018%2F11%2F21%2Fpatrick-chatain-vp-engineering-chez-contentsquare-penser-davantage-amelioration-continue-que-revolution-constante%2F&lang=fr-en" class="stealth-link" rel="external nofollow" target="_blank">
+                    <div class="card py-3 dots-rhb">
+                        <div class="card-body">
+                            <h4 class="card-title">Digital experience analytics</h4>
+                            <p class="card-text text-muted">by ContentSquare</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 py-3">
+                <a href="https://translate.yandex.com/translate?url=https%3A%2F%2Ftech.geniee.co.jp%2Fentry%2F2017%2F07%2F20%2F160100" class="stealth-link" rel="external nofollow" target="_blank">
+                    <div class="card py-3 dots-lb">
+                        <div class="card-body">
+                            <h4 class="card-title">Speeding up Report API</h4>
+                            <p class="card-text text-muted">at Geniee</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <a href="docs/en/introduction/adopters/" class="btn btn-lg btn-outline-orange mx-auto mt-3" role="button">Show more</a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container my-5">
+        <div class="row mb-5">
+            <div class="col-lg">
+                <h2 id="hardware-efficient" class="my-4">Hardware efficient</h2>
+                <p class="lead">ClickHouse processes typical analytical queries two to three orders of magnitude faster than traditional
+            row-oriented systems with the same available I/O throughput and CPU capacity. The system's columnar storage format allows fitting
+            more hot data in RAM, which leads to a shorter typical response times.</p>
+            </div>
+            <div class="col-lg-4">
+                <img src="images/index/hardware-efficient.svg" alt="ClickHouse is hardware efficient" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <h3>Strives for CPU efficiency</h3>
+                <p>Vectorized query execution involves relevant SIMD processor instructions
+            and runtime code generation. Processing data in columns increases CPU line cache hit rate.</p>
 
-<div id="grey-block" class="colored-block">
-    <div class="page">
+            </div>
+            <div class="col-lg">
+                <h3>Optimizes disk drive access</h3>
+                <p>ClickHouse minimizes the number of seeks for range queries, which increases efficiency of using rotational
+            disk drives, as it maintains locality of reference for continually stored data.</p>
+            </div>
+            <div class="col-lg">
+                <h3>Minimizes data transfers</h3>
+                <p>ClickHouse enables companies to manage their data and
+            create reports without using specialized networks that are aimed at high-performance computing.</p>
 
-        <h2 id="key-features">Key Features</h2>
-
-        <div class="block-50">
-            <ul class="dashed">
-                <li>True column-oriented storage</li>
-                <li>Vectorized query execution</li>
-                <li>Data compression</li>
-                <li>Parallel and distributed query execution</li>
-                <li>Real time query processing</li>
-                <li>Real time data ingestion</li>
-                <li>On-disk locality of reference</li>
-                <li>Cross-datacenter replication</li>
-                <li>High availability</li>
-                <li>SQL support</li>
-            </ul>
+            </div>
         </div>
 
-        <div class="block-50">
-            <ul class="dashed">
-                <li>Local and distributed joins</li>
-                <li>Pluggable external dimension tables</li>
-                <li>Arrays and nested data types</li>
-                <li>Approximate query processing</li>
-                <li>Probabilistic data structures</li>
-                <li>Full support of IPv6</li>
-                <li>Features for web analytics</li>
-                <li>State-of-the-art algorithms</li>
-                <li>Detailed documentation</li>
-                <li>Clean documented code</li>
-            </ul>
-        </div>
 
-        <div class="clear"></div>
     </div>
 </div>
-<div class="page">
+<div>
+    <div class="container text-center">
+        <img src="images/curl.svg" alt="ClickHouse не тормозит" />
+    </div>
+</div>
+<div>
+    <div class="container py-5">
 
-    <h2 id="feature-rich">Feature Rich</h2>
+        <div class="row">
+            <div class="col-lg">
+                <h2 id="feature-rich">Feature rich</h2>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-lg">
+                <div class="bg-number">1</div>
+                <h4>User-friendly SQL dialect</h4>
+                <p>ClickHouse features a user-friendly SQL query dialect with a number of built-in analytics capabilities. In additional to common functions that could by found in most DBMS, ClickHouse comes with a lot of domain-specific functions and features out of the box.</p>
+            </div>
+            <div class="col-lg">
+                <div class="bg-number">2</div>
+                <h4>Efficient managing of denormalized data</h4>
+                <p>Column-oriented nature of ClickHouse allows having hundreds or thousands of columns per table without slowing down SELECT queries. It's possible to pack even more data in by leveraging wide range data organizing options, such as arrays, tuples and nested data structures.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <div class="bg-number">3</div>
+                <h4>Join distributed or co-located data</h4>
+                <p>ClickHouse provides various options for joining tables. Joins could be either cluster local, they can also access data stored in external systems. There's also a external dictionaries support that provide alternative more simple syntax for accessing data from outside source.</p>
 
-    <p>ClickHouse features a user-friendly SQL query dialect with a number of built-in analytics capabilities.
-        For example, it includes probabilistic data
-        structures for fast and memory-efficient calculation of cardinalities and quantiles. There are functions for
-        working dates, times and time zones, as well as some specialized ones like addressing URLs and IPs
-        (both IPv4 and IPv6) and many more.</p>
+            </div>
+            <div class="col-lg">
+                <div class="bg-number">4</div>
+                <h4>Approximate query processing</h4>
+                <p>Users can control trade-off between result accuracy and query execution time, which is handy when dealing with multiple terabytes or petabytes of data. ClickHouse also provides probabilistic data structures for fast and memory-efficient calculation of cardinatilities and quantiles</p>
 
-    <p>Data organizing options available in ClickHouse, such as arrays, array joins, tuples and nested data structures, are
-        extremely efficient for managing denormalized data.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-dark text-light">
+    <div class="container py-5 my-5">
+        <div class="row text-center">
+            <div class="col-lg">
+                <h2 id="key-features">ClickHouse. Just makes you think faster!</h2>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-lg">
+                <ul class="lead list-unstyled  mb-0 mb-lg-1">
+                    <li><span class="text-yellow">•</span> True column-oriented storage</li>
+                    <li><span class="text-yellow">•</span> Vectorized query execution</li>
+                    <li><span class="text-yellow">•</span> Parallel and distributed query execution</li>
+                    <li><span class="text-yellow">•</span> Real time query processing</li>
+                    <li><span class="text-yellow">•</span> Real time data ingestion</li>
+                    <li><span class="text-yellow">•</span> On-disk locality of reference</li>
+                    <li><span class="text-yellow">•</span> Data compression</li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled mb-0 mb-lg-1">
+                    <li><span class="text-yellow">•</span> SQL support</li>
+                    <li><span class="text-yellow">•</span> Data skipping indices</li>
+                    <li><span class="text-yellow">•</span> High availability</li>
+                    <li><span class="text-yellow">•</span> Cross-datacenter replication</li>
+                    <li><span class="text-yellow">•</span> Local and distributed joins</li>
+                    <li><span class="text-yellow">•</span> Pluggable external dimension tables</li>
+                    <li><span class="text-yellow">•</span> Arrays and nested data types</li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled mb-0 mb-lg-1">
+                    <li><span class="text-yellow">•</span> Approximate query processing</li>
+                    <li><span class="text-yellow">•</span> Probabilistic data structures</li>
+                    <li><span class="text-yellow">•</span> Features for web and mobile analytics</li>
+                    <li><span class="text-yellow">•</span> Full support of IPv6</li>
+                    <li><span class="text-yellow">•</span> State-of-the-art algorithms</li>
+                    <li><span class="text-yellow">•</span> Detailed documentation</li>
+                    <li><span class="text-yellow">•</span> Clean documented code</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg text-lg-right my-3 my-lg-0">
+                <a href="#quick-start" class="btn btn-lg btn-yellow w-50" role="button">Quick start</a>
+            </div>
+            <div class="col-lg">
+                <a href="docs/en/" class="btn btn-lg btn-outline-yellow w-50" role="button">Documentation</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container">
 
-    <p>Using ClickHouse allows joining both distributed data and co-located data, as the system supports local joins and
-        distributed joins. It&nbsp;also offers an opportunity to use external dictionaries, dimension tables loaded from
-        an external source, for seamless joins with simple syntax.</p>
+        <h2 id="highly-reliable" class="mt-5">Highly reliable</h2>
 
-    <p>ClickHouse supports approximate query processing – you can get results as fast as you want, which is
-        indispensable when dealing with terabytes and petabytes of data.</p>
+        <p>ClickHouse has been managing petabytes of data serving a number of highload mass audience services of
+            <a href="https://www.yandex.com/company/"
+               rel="external nofollow">Yandex</a>, Russia's
+            leading search provider and one of largest European IT companies.
+            Since 2012, ClickHouse has been providing robust database management for the company's <a
+                    href="https://metrica.yandex.com/" rel="external nofollow">web analytics service</a>, comparison
+            e-commerce platform, public email service, online advertising platform, business intelligence tools
+            and infrastructure monitoring.</p>
 
-    <p>The system's conditional aggregate functions, calculation of totals and extremes, allow getting results with a
-        single query without having to run a number of them.</p>
+        <p>ClickHouse can be configured as purely distributed system located on independent nodes,
+            without any single points of failure.</p>
 
-    <h2 id="success-stories">Success Stories</h2>
+        <p>Software and hardware failures or misconfigurations do not result in loss of data. Instead of deleting "broken"
+            data, ClickHouse saves it&nbsp;or asks you what to do before a startup. All data is checksummed before every
+            read or write to disk or network. It&nbsp;is virtually impossible to delete data by accident as there are safeguards
+            even for human errors.</p>
 
-    <ul class="dashed">
-        <li><a href="docs/en/introduction/ya_metrika_task/">Yandex.Metrica</a></li>
-        <li><a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/"
-               rel="external nofollow" target="_blank">HTTP Analytics</a> and <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/"
-               rel="external nofollow" target="_blank">DNS Analytics</a> at CloudFlare</li>
-        <li><a href="https://www.slideshare.net/glebus/using-clickhouse-for-experimentation-104247173"
-               rel="external nofollow" target="_blank">ClickHouse for Experimentation</a> at Spotify</li>
-        <li><a href="https://blog.qrator.net/en/clickhouse-ddos-mitigation_37/"
-               rel="external nofollow" target="_blank">ClickHouse DB in DDoS mitigation</a> at Qrator</li>
-        <li><a href="https://translate.yandex.com/translate?url=https%3A%2F%2Fhabrahabr.ru%2Fpost%2F322620%2F&amp;lang=ru-en"
-               rel="external nofollow" target="_blank">Migrating to Yandex ClickHouse</a> by LifeStreet <span class="grey">(machine translation from Russian)</span></li>
-        <li><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fsouslecapot.net%2F2018%2F11%2F21%2Fpatrick-chatain-vp-engineering-chez-contentsquare-penser-davantage-amelioration-continue-que-revolution-constante%2F&lang=fr-en"
-               rel="external nofollow" target="_blank">ClickHouse at ContentSquare</a> <span class="grey">(machine translation from French)</span></li>
-        <li><a href="https://translate.yandex.com/translate?url=https%3A%2F%2Fhabrahabr.ru%2Fcompany%2Fsmi2%2Fblog%2F314558%2F&amp;lang=ru-en"
-               rel="external nofollow" target="_blank">How to start ClickHouse up and win the jackpot</a> by SMI2 <span class="grey">(machine translation from Russian)</span></li>
-        <li><a href="https://translate.yandex.com/translate?url=http%3A%2F%2Fwww.jianshu.com%2Fp%2F4c86a2478cca&amp;lang=zh-en"
-            rel="external nofollow" target="_blank">First place at Analysys OLAP algorithm contest</a> <span class="grey">(machine translation from Chinese)</span></li>
-        <li><a href="https://translate.yandex.com/translate?url=https%3A%2F%2Ftech.geniee.co.jp%2Fentry%2F2017%2F07%2F20%2F160100"
-            rel="external nofollow" target="_blank">Speeding up Report API</a> at Geniee <span class="grey">(machine translation from Japanese)</span></li>
-        <li><a href="https://www.yandex.com/company/press_center/press_releases/2012/2012-04-10/"
-               rel="external nofollow" target="_blank">LHCb experiment</a> by CERN</li>
+        <p>ClickHouse offers flexible limits on query complexity and resource usage, which can be fine-tuned with settings.
+            It&nbsp;is possible to simultaneously serve both a number of high priority low-latency requests and some
+            long-running queries with background priority.</p>
+    </div>
+</div>
+<div class="bg-light py-5 my-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg">
+                <h2>When to use ClickHouse</h2>
+                <p>For analytics over stream of clean, well structured and immutable events or logs.
+            It is recommended to put each such stream into a single wide fact table with pre-joined dimensions.</p>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled mb-0 mb-lg-1">
+                    <li>✓ Web and App analytics</li>
+                    <li>✓ Advertising networks and RTB</li>
+                    <li>✓ Telecommunications</li>
+                    <li>✓ E-commerce and finance</li>
+                    <li>✓ Information security</li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled">
+                    <li>✓ Monitoring and telemetry</li>
+                    <li>✓ Time series</li>
+                    <li>✓ Business intelligence</li>
+                    <li>✓ Online games</li>
+                    <li>✓ Internet of Things</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row text-red">
+            <div class="col-lg">
+                <h2>When NOT to use ClickHouse</h2>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled mb-0 mb-lg-1">
+                    <li>✕ Transactional workloads (OLTP)</li>
+                    <li>✕ Key-value requests with high rate</li>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <ul class="lead list-unstyled">
+                    <li>✕ Blob or document storage</li>
+                    <li>✕ Over-normalized data</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<div>
+    <div class="container lead">
+    <h2 id="quick-start" class="mt-5">Quick start</h2>
+
+    <p>System requirements for pre-built packages: Linux, x86_64 with SSE 4.2.</p>
+
+    <ul class="nav nav-tabs" id="install-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="deb-tab" data-toggle="tab" href="#deb" role="tab" aria-controls="deb" aria-selected="true" title="deb packages">Ubuntu or Debian</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="rpm-tab" data-toggle="tab" href="#rpm" role="tab" aria-controls="rpm" aria-selected="false" title="rpm packages">CentOS or RedHat</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tgz-tab" data-toggle="tab" href="#tgz" role="tab" aria-controls="tgz" aria-selected="false" title="tgz packages">Other Linux</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="docs/en/commercial/cloud/" role="tab" aria-controls="cloud" aria-selected="false" title="Cloud Service Providers">Cloud</a>
+        </li>
     </ul>
 
-    <h2>When to use ClickHouse</h2>
-
-    <p>For analytics over stream of clean, well structured and immutable events or logs.
-        It is recommended to put each such stream into a single wide fact table with pre-joined dimensions.
-    </p>
-    <p>Some examples of viable applications:</p>
-
-    <ul class="dashed">
-        <li>Web and App analytics</li>
-        <li>Advertising networks and RTB</li>
-        <li>Telecommunications</li>
-        <li>E-commerce and finance</li>
-        <li>Information security</li>
-        <li>Monitoring and telemetry</li>
-        <li>Time series</li>
-        <li>Business intelligence</li>
-        <li>Online games</li>
-        <li>Internet of Things</li>
-    </ul>
-
-    <h2>When <span class="red">NOT</span> to use ClickHouse</h2>
-
-    <ul class="dashed">
-        <li>Transactional workloads (OLTP)</li>
-        <li>Key-value access with high request rate</li>
-        <li>Blob or document storage</li>
-        <li>Over-normalized data</li>
-    </ul>
-
-    <h2 id="highly-reliable">Highly Reliable</h2>
-
-    <p>ClickHouse has been managing petabytes of data serving a number of highload mass audience services of
-        <a href="https://www.yandex.com/company/"
-           rel="external nofollow">Yandex</a>, Russia's
-        leading search provider and one of largest European IT companies.
-        Since 2012, ClickHouse has been providing robust database management for the company's <a
-                href="https://metrica.yandex.com/" rel="external nofollow">web analytics service</a>, comparison
-        e-commerce platform, public email service, online advertising platform, business intelligence tools
-        and infrastructure monitoring.</p>
-
-    <p>ClickHouse can be configured as purely distributed system located on independent nodes,
-        without any single points of failure.</p>
-
-    <p>Software and hardware failures or misconfigurations do not result in loss of data. Instead of deleting "broken"
-        data, ClickHouse saves it&nbsp;or asks you what to do before a startup. All data is checksummed before every
-        read or write to disk or network. It&nbsp;is virtually impossible to delete data by accident as there are safeguards
-        even for human errors.</p>
-
-    <p>ClickHouse offers flexible limits on query complexity and resource usage, which can be fine-tuned with settings.
-        It&nbsp;is possible to simultaneously serve both a number of high priority low-latency requests and some
-        long-running queries with background priority.</p>
-
-    <h2 id="simple-and-handy">Simple and Handy</h2>
-    <p>ClickHouse streamlines all your data processing. It's easy to use: ingest all your structured data into the
-        system, and it&nbsp;is instantly available for reports. New columns for new properties or dimensions can be
-        easily added to the system at any time without slowing it&nbsp;down.</p>
-
-    <p>ClickHouse is simple and works out-of-the-box. As well as performing on hundreds of node clusters, this system
-        can be easily installed on a single server or even a virtual machine. No development experience or code-writing
-        skills are required to install ClickHouse.</p>
-
-    <h2 id="quick-start">Quick Start</h2>
-
-    <p>System requirements: Linux, x86_64 with SSE 4.2.</p>
-
-    <p>Install packages for <span class="distributive_selected" id="repo_deb">Ubuntu/Debian</span>, <span class="distributive_not_selected" id="repo_rpm">CentOS/RedHat</span> or <span class="distributive_not_selected" id="repo_tgz">other Linux</span>:</p>
-
-    <code id="packages-install">
-<pre id="instruction_deb">
-sudo apt-get install dirmngr
+    <div class="tab-content" id="install-tab-content">
+        <div class="tab-pane show active" id="deb" role="tabpanel" aria-labelledby="deb-tab">
+            <div class="syntax p-3 my-3"><pre><span></span>sudo apt-get install dirmngr
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E0C56BD4
 
-echo "deb http://repo.yandex.ru/clickhouse/deb/stable/ main/" | sudo tee /etc/apt/sources.list.d/clickhouse.list
+<span class="nb">echo</span> <span class="s2">&quot;deb http://repo.yandex.ru/clickhouse/deb/stable/ main/&quot;</span> <span class="p">|</span> sudo tee <span class="se">\</span>
+    /etc/apt/sources.list.d/clickhouse.list
 sudo apt-get update
 
 sudo apt-get install -y clickhouse-server clickhouse-client
 
 sudo service clickhouse-server start
 clickhouse-client
-</pre>
-<pre id="instruction_rpm" style="display: none;">
-sudo yum install yum-utils
+</pre></div>
+
+
+        </div>
+        <div class="tab-pane" id="rpm" role="tabpanel" aria-labelledby="rpm-tab">
+            <div class="syntax p-3 my-3"><pre><span></span>sudo yum install yum-utils
 sudo rpm --import https://repo.yandex.ru/clickhouse/CLICKHOUSE-KEY.GPG
 sudo yum-config-manager --add-repo https://repo.yandex.ru/clickhouse/rpm/stable/x86_64
 sudo yum install clickhouse-server clickhouse-client
 
 sudo /etc/init.d/clickhouse-server start
 clickhouse-client
-</pre>
+</pre></div>
 
-<pre id="instruction_tgz" style="display: none;">
-export LATEST_VERSION=`curl https://api.github.com/repos/ClickHouse/ClickHouse/tags | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1`
-curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-common-static-$LATEST_VERSION.tgz
-curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-common-static-dbg-$LATEST_VERSION.tgz
-curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-server-$LATEST_VERSION.tgz
-curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-client-$LATEST_VERSION.tgz
+        </div>
+        <div class="tab-pane" id="tgz" role="tabpanel" aria-labelledby="thz-tab">
+            <div class="syntax p-3 my-3"><pre><span></span><span class="nb">export</span> <span class="nv">LATEST_VERSION</span><span class="o">=</span><span class="k">$(</span>curl https://api.github.com/repos/ClickHouse/ClickHouse/tags <span class="p">|</span> <span class="se">\</span>
+    grep -Eo <span class="s1">&#39;[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+&#39;</span> <span class="p">|</span> head -n <span class="m">1</span><span class="k">)</span>
+curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-common-static-<span class="nv">$LATEST_VERSION</span>.tgz
+curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-common-static-dbg-<span class="nv">$LATEST_VERSION</span>.tgz
+curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-server-<span class="nv">$LATEST_VERSION</span>.tgz
+curl -O https://repo.yandex.ru/clickhouse/tgz/clickhouse-client-<span class="nv">$LATEST_VERSION</span>.tgz
 
-tar -xzvf clickhouse-common-static-$LATEST_VERSION.tgz
-sudo clickhouse-common-static-$LATEST_VERSION/install/doinst.sh
+tar -xzvf clickhouse-common-static-<span class="nv">$LATEST_VERSION</span>.tgz
+sudo clickhouse-common-static-<span class="nv">$LATEST_VERSION</span>/install/doinst.sh
 
-tar -xzvf clickhouse-common-static-dbg-$LATEST_VERSION.tgz
-sudo clickhouse-common-static-dbg-$LATEST_VERSION/install/doinst.sh
+tar -xzvf clickhouse-common-static-dbg-<span class="nv">$LATEST_VERSION</span>.tgz
+sudo clickhouse-common-static-dbg-<span class="nv">$LATEST_VERSION</span>/install/doinst.sh
 
-tar -xzvf clickhouse-server-$LATEST_VERSION.tgz
-sudo clickhouse-server-$LATEST_VERSION/install/doinst.sh
+tar -xzvf clickhouse-server-<span class="nv">$LATEST_VERSION</span>.tgz
+sudo clickhouse-server-<span class="nv">$LATEST_VERSION</span>/install/doinst.sh
 sudo /etc/init.d/clickhouse-server start
 
-tar -xzvf clickhouse-client-$LATEST_VERSION.tgz
-sudo clickhouse-client-$LATEST_VERSION/install/doinst.sh
-</pre>
+tar -xzvf clickhouse-client-<span class="nv">$LATEST_VERSION</span>.tgz
+sudo clickhouse-client-<span class="nv">$LATEST_VERSION</span>/install/doinst.sh
+</pre></div>
 
-    </code>
+        </div>
+    </div>
 
     <p>For other operating systems the easiest way to get started is using
         <a href="https://hub.docker.com/r/yandex/clickhouse-server/" rel="external nofollow"
@@ -455,15 +583,25 @@ sudo clickhouse-client-$LATEST_VERSION/install/doinst.sh
             Yandex Managed Service for ClickHouse</a>.
     </p>
 
-    <p>After you got connected to your ClickHouse server, you can proceed to <strong><a href="/docs/en/getting_started/tutorial/">tutorial</a></strong> or <strong><a href="docs/en/">full
-        documentation</a></strong>.</p>
+    <p>After you got connected to your ClickHouse server, you can proceed to:</p>
+        <p>
+            <a href="docs/en/getting_started/tutorial/" class="btn btn-lg btn-outline-orange" role="button">
+                &nbsp;&nbsp;&nbsp;Tutorial&nbsp;&nbsp;&nbsp;
+            </a>&nbsp;
+            <a href="docs/en/" class="btn btn-lg btn-outline-orange" role="button">Documentation</a>
+        </p>
+    </div>
+</div>
+<div>
+    <div class="container">
 
-    <h2 id="contacts">Contacts</h2>
-    <ul class="dashed">
+    <h2 id="contacts" class="mt-5">Contacts</h2>
+    <ul class="lead">
         <li>Subscribe to the <a href="https://clickhouse.yandex/blog/en" target="_blank">official ClickHouse blog</a>
         and its <a href="https://clickhouse.yandex/blog/ru" target="_blank">counterpart in Russian</a>.</li>
         <li>Ask any questions on <a href="https://stackoverflow.com/questions/tagged/clickhouse"
-                                    rel="external nofollow" target="_blank">Stack Overflow</a> or
+                                    rel="external nofollow" target="_blank">Stack Overflow</a>,
+            <a href="https://join.slack.com/t/clickhousedb/shared_invite/enQtOTUzMjM4ODQwNTc5LWJmMjE3Yjc2YmI1ZDBlZmI4ZTc3OWY3ZTIwYTljYzY4MzBlODM3YzBjZTc1YmYyODRlZTJkYTgzYzBiNTA2Yjk" rel="external nofollow" target="_blank">Slack</a> or
             <a href="https://groups.google.com/group/clickhouse"
                rel="external nofollow" target="_blank">Google Group</a>.
         </li>
@@ -484,149 +622,47 @@ sudo clickhouse-client-$LATEST_VERSION/install/doinst.sh
             You can also <a href="https://forms.yandex.com/surveys/meet-yandex-clickhouse-team/" target="_blank" rel="external nofollow">fill this form</a> to meet us in person.</li>
     </ul>
 
-    <p>Friendly reminder: check out the documentation in <a href="docs/en/">English</a>, <a href="docs/ru/">Russian</a>, <a href="docs/zh/">Chinese</a> or <a href="docs/fa/">Farsi</a> first &mdash; maybe your question is already covered.
+    <p class="lead">Friendly reminder: check out the documentation in <a href="docs/en/">English</a>, <a href="docs/ru/">Russian</a>, <a href="docs/zh/">Chinese</a>, <a href="docs/ja/">Japanese</a> or <a href="docs/fa/">Farsi</a> first &mdash; maybe your question is already covered.
     </p>
 
-    <h2>Like ClickHouse?</h2>
-    <p>Help to spread the word about it via <a rel="external nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://clickhouse.tech">Facebook</a>,
+    <h2 class="mt-5">Like ClickHouse?</h2>
+    <p class="lead">Help to spread the word about it via <a rel="external nofollow" target="_blank" href="https://www.facebook.com/sharer.php?u=https://clickhouse.tech">Facebook</a>,
         <a rel="external nofollow" target="_blank" href="https://twitter.com/intent/tweet?url=https://clickhouse.tech">Twitter</a> and
         <a rel="external nofollow" target="_blank" href="https://www.linkedin.com/shareArticle?url=https://clickhouse.tech">LinkedIn</a>!</p>
 
-    <p>Also hosting ClickHouse Meetups is very appreciated, <a href="https://forms.yandex.com/surveys/meet-yandex-clickhouse-team/" target="_blank" rel="external nofollow">fill this form</a>
+    <p class="lead">Also hosting ClickHouse Meetups is very appreciated, <a href="https://forms.yandex.com/surveys/meet-yandex-clickhouse-team/" target="_blank" rel="external nofollow">fill this form</a>
         if you are interested and we'll get in touch.
         Short reports about previous meetups are <a href="https://clickhouse.yandex/blog/en?tag=meetup" target="_blank">published in official ClickHouse blog</a>.</p>
 
-    <p class="warranty"><a href="https://github.com/ClickHouse/ClickHouse/blob/master/LICENSE"
-                           rel="external nofollow" target="_blank">
-        ClickHouse source code is published under Apache 2.0 License.</a> Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-        KIND, either express or implied.</p>
-
-    <p id="footer">&copy; 2016–2020 <a href="https://yandex.com/company/" rel="external nofollow">Yandex LLC</a></p>
-
+    </div>
 </div>
 
-<a id="github_link"
-   href="https://cloud.yandex.com/services/managed-clickhouse?utm_source=referrals&utm_medium=clickhouseofficialsite&utm_campaign=link2"
-   rel="external nofollow"
-   target="_blank"
-><div id="github">Try on Yandex.Cloud</div></a>
 
-<script type="text/javascript" src="https://yastatic.net/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.get('https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/README.md', function(e) {
-            var skip = true;
-            var lines = e.split('\n');
-            var result = [];
-            $.each(lines, function(idx) {
-                var line = lines[idx];
-                if (skip) {
-                    if (line.includes('Upcoming Events')) {
-                        skip = false;
-                    }
-                } else {
-                    if (!line) { return; };
-                    line = line.split('](');
-                    var tail = line[1].split(') ');
-                    result.push(
-                        '<a class="announcement-link" rel="external nofollow" target="_blank" href="' +
-                        tail[0] + '">' + line[0].replace('* [', '').replace('ClickHouse Meetup in ', '') +
-                        '</a> ' + tail[1].slice(0, -1)
-                    );
-                }
-            });
-            if (result.length) {
-                if (result.length == 1) {
-                    result = 'Upcoming Meetup: ' + result[0];
-                } else {
-                    result = 'Upcoming Meetups: ' + result.join(', ');
-                    var offset = result.lastIndexOf(', ');
-                    result = result.slice(0, offset) + result.slice(offset).replace(', ', ' and ');
-                }
-                $('#announcement>.page').html(result);
-            }
-        });
-        var name = $('#logo-text').attr('alt').trim().toLowerCase();
-        var feedback_address = name + '-feedback' + '@yandex-team.com';
-        var feedback_email = $('#feedback_email');
-        feedback_email.attr('href', 'mailto:' + feedback_address);
-        feedback_email.html(feedback_address);
 
-        $("a[href^='#']").on('click', function (e) {
-            e.preventDefault();
-            var selector = $(e.target).attr('href');
-            var offset = 0;
+<div id="footer" class="bg-dark text-muted mt-5">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-8 text-left">
+                <a href="https://github.com/ClickHouse/ClickHouse/blob/master/LICENSE"
+                           rel="external nofollow" target="_blank" class="stealth-link">
+        ClickHouse source code is published under Apache 2.0 License.</a> Software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+        KIND, either express or implied.
+            </div>
+            <div class="col-lg-4 text-right">
+                &copy; 2016–2020 <a href="https://yandex.com/company/" rel="external nofollow" target="_blank" class="text-muted">Yandex LLC</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-            if (selector) {
-                offset = $(selector).offset().top - $('#logo').height() * 1.5;
-            }
-            $('html, body').animate({
-                scrollTop: offset
-            }, 500);
-            window.history.replaceState('', document.title, window.location.href.replace(location.hash, '') + this.hash);
-        });
 
-        var hostParts = window.location.host.split('.');
-        if (hostParts.length > 2 && hostParts[0] != 'test' && hostParts[1] != 'github') {
-            window.location.host = hostParts[0] + '.' + hostParts[1];
-        }
-
-        var available_distributives = ['deb', 'rpm', 'tgz'];
-        var selected_distributive = 'deb';
-
-        function refresh_distributives() {
-            available_distributives.forEach(function (name) {
-                if (name == selected_distributive) {
-                    $('#repo_' + name).attr("class", "distributive_selected");
-                    $('#instruction_' + name).show();
-                } else {
-                    $('#repo_' + name).attr("class", "distributive_not_selected");
-                    $('#instruction_' + name).hide();
-                }
-            });
-        };
-
-        refresh_distributives();
-
-        available_distributives.forEach(function (name) {
-            $('#repo_' + name).on('click', function () {
-                selected_distributive = name;
-                refresh_distributives();
-            });
-        });
-    });
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter18343495 = new Ya.Metrika2({
-                    id:18343495,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true
-                });
-            } catch(e) { }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks2");
-</script>
+<script type="text/javascript" src="js/base.js?d4cc635"></script>
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/18343495" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
-<!-- /Yandex.Metrika counter -->
+
 </body>
 </html>
