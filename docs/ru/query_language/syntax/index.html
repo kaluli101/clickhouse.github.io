@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?dc3d576?1584081886">
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?127bee6?1584085437">
     
     
   </head>
@@ -2833,6 +2833,20 @@
 
 
   <li class="md-nav__item">
+    <a href="../../data_types/datetime64/" title="DateTime64" class="md-nav__link">
+      DateTime64
+    </a>
+  </li>
+
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
     <a href="../../data_types/enum/" title="Enum" class="md-nav__link">
       Enum
     </a>
@@ -2904,13 +2918,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-16" type="checkbox" id="nav-6-9-16">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-17" type="checkbox" id="nav-6-9-17">
     
-    <label class="md-nav__link" for="nav-6-9-16">
+    <label class="md-nav__link" for="nav-6-9-17">
       Вложенные структуры данных
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-9-16">
+      <label class="md-nav__title" for="nav-6-9-17">
         Вложенные структуры данных
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2948,13 +2962,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-17" type="checkbox" id="nav-6-9-17">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-18" type="checkbox" id="nav-6-9-18">
     
-    <label class="md-nav__link" for="nav-6-9-17">
+    <label class="md-nav__link" for="nav-6-9-18">
       Служебные типы данных
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-9-17">
+      <label class="md-nav__title" for="nav-6-9-18">
         Служебные типы данных
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3034,13 +3048,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-18" type="checkbox" id="nav-6-9-18">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-9-19" type="checkbox" id="nav-6-9-19">
     
-    <label class="md-nav__link" for="nav-6-9-18">
+    <label class="md-nav__link" for="nav-6-9-19">
       Domains
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-6-9-18">
+      <label class="md-nav__title" for="nav-6-9-19">
         Domains
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -4242,7 +4256,13 @@
 Комментарии в SQL-стиле: от <code>--</code> до конца строки. Пробел после <code>--</code> может не ставиться.
 Комментарии в C-стиле: от <code>/*</code> до <code>*/</code>. Такие комментарии могут быть многострочными. Пробелы тоже не обязательны.</p>
 <h2 id="syntax-keywords">Ключевые слова<a class="headerlink" href="#syntax-keywords" title="Permanent link">&para;</a></h2>
-<p>Ключевые слова (например, <code>SELECT</code>) регистронезависимы. Всё остальное (имена столбцов, функций и т. п.), в отличие от стандарта SQL, регистрозависимо.</p>
+<p>Ключевые слова не зависят от регистра, если они соответствуют:</p>
+<ul>
+<li>Стандарту SQL. Например, применение любого из вариантов <code>SELECT</code>,  <code>select</code> или <code>SeLeCt</code> не вызовет ошибки.</li>
+<li>Реализации в некоторых популярных DBMS (MySQL или Postgres). Например, <code>DateTime</code> и <code>datetime</code>.</li>
+</ul>
+<p>Зависимость от регистра для имён типов данных можно проверить в таблице <code>system.data_type_families</code>.</p>
+<p>В отличие от стандарта SQL, все остальные ключевые слова, включая названия функций зависят от регистра.</p>
 <p>Ключевые слова не зарезервированы (а всего лишь парсятся как ключевые слова в соответствующем контексте). Если вы используете <a href="#syntax-identifiers">идентификаторы</a>, совпадающие с ключевыми словами, заключите их в кавычки. Например, запрос <code>SELECT "FROM" FROM table_name</code> валиден, если таблица <code>table_name</code> имеет столбец с именем <code>"FROM"</code>.</p>
 <h2 id="syntax-identifiers">Идентификаторы<a class="headerlink" href="#syntax-identifiers" title="Permanent link">&para;</a></h2>
 <p>Идентификаторы:</p>
@@ -4447,7 +4467,7 @@ Code: 184. DB::Exception: Received from localhost:9000, 127.0.0.1. DB::Exception
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/dc3d576d31fcac187df273f5668e24081bf91666" rel="external nofollow">dc3d576</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/127bee643cd137892c988eea650596a65f73bbc6" rel="external nofollow">127bee6</a></span>
 </div>
       
     </div>

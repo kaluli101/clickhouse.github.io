@@ -191,6 +191,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://clickhouse.yandex/docs/zh/data_types/datetime64/</loc>
+     <lastmod>2020-03-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://clickhouse.yandex/docs/zh/data_types/datetime/</loc>
      <lastmod>2020-03-13</lastmod>
      <changefreq>daily</changefreq>
