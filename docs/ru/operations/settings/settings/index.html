@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?4c35819?1584036669">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?36a62ec?1584059667">
     
     
   </head>
@@ -5910,7 +5910,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <li>1 — включена.</li>
 </ul>
 <p>Значение по умолчанию: 1.</p>
-<p>По умолчанию блоки, вставляемые в реплицируемые таблицы оператором <code>INSERT</code>, дедуплицируются (см. <a href="../../table_engines/replication/">Репликация данных</a>.</p>
+<p>По умолчанию блоки, вставляемые в реплицируемые таблицы оператором <code>INSERT</code>, дедуплицируются (см. <a href="../../table_engines/replication/">Репликация данных</a>).</p>
 <h2 id="settings-deduplicate_blocks_in_dependent_materialized_views">deduplicate_blocks_in_dependent_materialized_views<a class="headerlink" href="#settings-deduplicate_blocks_in_dependent_materialized_views" title="Permanent link">&para;</a></h2>
 <p>Включает и выключает проверку дедупликации для материализованных представлений, которые получают данные из Replicated* таблиц.</p>
 <p>Возможные значения:</p>
@@ -5919,8 +5919,8 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <li>1 — включена.</li>
 </ul>
 <p>Значение по умолчанию: 0.</p>
-<p>По умолчанию проверка дедупликации у материализованных представлений не производится, а наследуюется от Replicated* (основной) таблицы, за которой "следит" материализованное представление.
-Т.е. если <code>INSERT</code> в основную таблицу д.б. пропущен (сдедуплирован), то автоматически не будет вставки и в материализованные представления. Это имплементировано для того, чтобы работали материализованные представления, которые сильно группируют данные основных <code>INSERT</code>, до такой степени что блоки вставляемые в материализованные представления получаются одинаковыми для разных <code>INSERT</code> в основную таблицу.
+<p>По умолчанию проверка дедупликации у материализованных представлений не производится, а наследуется от Replicated* (основной) таблицы, за которой "следит" материализованное представление.
+Т.е. если <code>INSERT</code> в основную таблицу д.б. пропущен (сдедуплицирован), то автоматически не будет вставки и в материализованные представления. Это имплементировано для того, чтобы работали материализованные представления, которые сильно группируют данные основных <code>INSERT</code>, до такой степени что блоки вставляемые в материализованные представления получаются одинаковыми для разных <code>INSERT</code> в основную таблицу.
 Одновременно это "ломает" идемпотентность вставки в материализованные представления. Т.е. если <code>INSERT</code> был успешен в основную таблицу и неуспешен в таблицу материализованного представления (напр. из-за сетевого сбоя при коммуникации с Zookeeper), клиент получит ошибку и попытается повторить <code>INSERT</code>. Но вставки в материализованные представления произведено не будет, потому что дедупликация сработает на основной таблице. Настройка <code>deduplicate_blocks_in_dependent_materialized_views</code> позволяет это изменить. Т.е. при повторном <code>INSERT</code> будет произведена дедупликация на таблице материализованного представления, и повторный инсерт вставит данные в таблицу материализованного представления, которые не удалось вставить из-за сбоя первого <code>INSERT</code>.</p>
 <h2 id="settings-count_distinct_implementation">count_distinct_implementation<a class="headerlink" href="#settings-count_distinct_implementation" title="Permanent link">&para;</a></h2>
 <p>Задаёт, какая из функций <code>uniq*</code> используется при выполнении конструкции <a href="../../../query_language/agg_functions/reference/#agg_function-count">COUNT(DISTINCT ...)</a>.</p>
@@ -6218,7 +6218,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/4c35819cd089641c4d5a4ee38f1cd5a41e546680" rel="external nofollow">4c35819</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/36a62ece5b0c48130537034d338b7e70af9e719d" rel="external nofollow">36a62ec</a></span>
 </div>
       
     </div>
