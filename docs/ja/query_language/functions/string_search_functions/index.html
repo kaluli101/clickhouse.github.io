@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?36a62ec?1584059667">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?dc3d576?1584081886">
     
     
   </head>
@@ -1704,8 +1704,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positionutf8-haystack-needle" title="positionUTF8(haystack, needle)" class="md-nav__link">
-    positionUTF8(haystack, needle)
+  <a href="#positioncaseinsensitive" title="positionCaseInsensitive" class="md-nav__link">
+    positionCaseInsensitive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positionutf8" title="positionUTF8" class="md-nav__link">
+    positionUTF8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioncaseinsensitiveutf8" title="positionCaseInsensitiveUTF8" class="md-nav__link">
+    positionCaseInsensitiveUTF8
   </a>
   
 </li>
@@ -4074,8 +4088,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positionutf8-haystack-needle" title="positionUTF8(haystack, needle)" class="md-nav__link">
-    positionUTF8(haystack, needle)
+  <a href="#positioncaseinsensitive" title="positionCaseInsensitive" class="md-nav__link">
+    positionCaseInsensitive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positionutf8" title="positionUTF8" class="md-nav__link">
+    positionUTF8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioncaseinsensitiveutf8" title="positionCaseInsensitiveUTF8" class="md-nav__link">
+    positionCaseInsensitiveUTF8
   </a>
   
 </li>
@@ -4231,12 +4259,176 @@
                   <h1 id="functions-for-searching-strings">Functions for Searching Strings<a class="headerlink" href="#functions-for-searching-strings" title="Permanent link">&para;</a></h1>
 <p>The search is case-sensitive by default in all these functions. There are separate variants for case insensitive search.</p>
 <h2 id="position">position(haystack, needle), locate(haystack, needle)<a class="headerlink" href="#position" title="Permanent link">&para;</a></h2>
-<p>Search for the substring <code>needle</code> in the string <code>haystack</code>.
-Returns the position (in bytes) of the found substring, starting from 1, or returns 0 if the substring was not found.</p>
-<p>For a case-insensitive search, use the function <code>positionCaseInsensitive</code>.</p>
-<h2 id="positionutf8-haystack-needle">positionUTF8(haystack, needle)<a class="headerlink" href="#positionutf8-haystack-needle" title="Permanent link">&para;</a></h2>
-<p>The same as <code>position</code>, but the position is returned in Unicode code points. Works under the assumption that the string contains a set of bytes representing a UTF-8 encoded text. If this assumption is not met, it returns some result (it doesn't throw an exception).</p>
-<p>For a case-insensitive search, use the function <code>positionCaseInsensitiveUTF8</code>.</p>
+<p>Returns the position (in bytes) of the found substring in the string, starting from 1.</p>
+<p>Works under the assumption that the string contains a set of bytes representing a single-byte encoded text. If this assumption is not met and a character can't be represented using a single byte, the function doesn't throw an exception and returns some unexpected result. If character can be represented using two bytes, it will use two bytes and so on.</p>
+<p>For a case-insensitive search, use the function <a href="#positioncaseinsensitive">positionCaseInsensitive</a>.</p>
+<p><strong>Syntax</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">position</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Alias: <code>locate(haystack, needle)</code>.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>haystack</code> — string, in which substring will to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+<li><code>needle</code> —  substring to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+</ul>
+<p><strong>Returned values</strong></p>
+<ul>
+<li>Starting position in bytes (counting from 1), if substring was found.</li>
+<li>0, if the substring was not found.</li>
+</ul>
+<p>Type: <code>Integer</code>.</p>
+<p><strong>Examples</strong></p>
+<p>The phrase "Hello, world!" contains a set of bytes representing a single-byte encoded text. The function returns some expected result:</p>
+<p>Query:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="k">position</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─position(&#39;Hello, world!&#39;, &#39;!&#39;)─┐
+│                             13 │
+└────────────────────────────────┘
+</pre></div>
+
+
+<p>The same phrase in Russian contains characters which can't be represented using a single byte. The function returns some unexpected result (use <a href="#positionutf8">positionUTF8</a> function for multi-byte encoded text):</p>
+<p>Query:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="k">position</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─position(&#39;Привет, мир!&#39;, &#39;!&#39;)─┐
+│                            21 │
+└───────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positioncaseinsensitive">positionCaseInsensitive<a class="headerlink" href="#positioncaseinsensitive" title="Permanent link">&para;</a></h2>
+<p>The same as <a href="#position">position</a> returns the position (in bytes) of the found substring in the string, starting from 1. Use the function for a case-insensitive search.</p>
+<p>Works under the assumption that the string contains a set of bytes representing a single-byte encoded text. If this assumption is not met and a character can't be represented using a single byte, the function doesn't throw an exception and returns some unexpected result. If character can be represented using two bytes, it will use two bytes and so on.</p>
+<p><strong>Syntax</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionCaseInsensitive</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>haystack</code> — string, in which substring will to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+<li><code>needle</code> —  substring to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+</ul>
+<p><strong>Returned values</strong></p>
+<ul>
+<li>Starting position in bytes (counting from 1), if substring was found.</li>
+<li>0, if the substring was not found.</li>
+</ul>
+<p>Type: <code>Integer</code>.</p>
+<p><strong>Example</strong></p>
+<p>Query:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionCaseInsensitive</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionCaseInsensitive(&#39;Hello, world!&#39;, &#39;hello&#39;)─┐
+│                                                 1 │
+└───────────────────────────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positionutf8">positionUTF8<a class="headerlink" href="#positionutf8" title="Permanent link">&para;</a></h2>
+<p>Returns the position (in Unicode points) of the found substring in the string, starting from 1.</p>
+<p>Works under the assumption that the string contains a set of bytes representing a UTF-8 encoded text. If this assumption is not met, the function doesn't throw an exception and returns some unexpected result. If character can be represented using two Unicode points, it will use two and so on.</p>
+<p>For a case-insensitive search, use the function <a href="#positioncaseinsensitiveutf8">positionCaseInsensitiveUTF8</a>.</p>
+<p><strong>Syntax</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionUTF8</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>haystack</code> — string, in which substring will to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+<li><code>needle</code> —  substring to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+</ul>
+<p><strong>Returned values</strong></p>
+<ul>
+<li>Starting position in Unicode points (counting from 1), if substring was found.</li>
+<li>0, if the substring was not found.</li>
+</ul>
+<p>Type: <code>Integer</code>.</p>
+<p><strong>Examples</strong></p>
+<p>The phrase "Hello, world!" in Russian contains a set of Unicode points representing a single-point encoded text. The function returns some expected result:</p>
+<p>Query:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Привет, мир!&#39;, &#39;!&#39;)─┐
+│                                12 │
+└───────────────────────────────────┘
+</pre></div>
+
+
+<p>The phrase "Salut, étudiante!", where character <code>é</code> can be represented using a one point (<code>U+00E9</code>) or two points (<code>U+0065U+0301</code>) the function can be returned some unexpected result:</p>
+<p>Query for the letter <code>é</code>, which is represented one Unicode point <code>U+00E9</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Salut, étudiante!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Salut, étudiante!&#39;, &#39;!&#39;)─┐
+│                                     17 │
+└────────────────────────────────────────┘
+</pre></div>
+
+
+<p>Query for the letter <code>é</code>, which is represented two Unicode points <code>U+0065U+0301</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Salut, étudiante!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Salut, étudiante!&#39;, &#39;!&#39;)─┐
+│                                     18 │
+└────────────────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positioncaseinsensitiveutf8">positionCaseInsensitiveUTF8<a class="headerlink" href="#positioncaseinsensitiveutf8" title="Permanent link">&para;</a></h2>
+<p>The same as <a href="#positionutf8">positionUTF8</a>, but is case-insensitive. Returns the position (in Unicode points) of the found substring in the string, starting from 1.</p>
+<p>Works under the assumption that the string contains a set of bytes representing a UTF-8 encoded text. If this assumption is not met, the function doesn't throw an exception and returns some unexpected result. If character can be represented using two Unicode points, it will use two and so on.</p>
+<p><strong>Syntax</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionCaseInsensitiveUTF8</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>haystack</code> — string, in which substring will to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+<li><code>needle</code> —  substring to be searched. <a href="../../syntax/#syntax-string-literal">String</a>.</li>
+</ul>
+<p><strong>Returned value</strong></p>
+<ul>
+<li>Starting position in Unicode points (counting from 1), if substring was found.</li>
+<li>0, if the substring was not found.</li>
+</ul>
+<p>Type: <code>Integer</code>.</p>
+<p><strong>Example</strong></p>
+<p>Query:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionCaseInsensitiveUTF8</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;Мир&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionCaseInsensitiveUTF8(&#39;Привет, мир!&#39;, &#39;Мир&#39;)─┐
+│                                                  9 │
+└────────────────────────────────────────────────────┘
+</pre></div>
+
+
 <h2 id="multiSearchAllPositions">multiSearchAllPositions<a class="headerlink" href="#multiSearchAllPositions" title="Permanent link">&para;</a></h2>
 <p>The same as <a href="./#position">position</a> but returns <code>Array</code> of positions (in bytes) of the found corresponding substrings in the string. Positions are indexed starting from 1.</p>
 <p>The search is performed on sequences of bytes without respect to string encoding and collation.</p>
@@ -4442,7 +4634,7 @@ For other regular expressions, the code is the same as for the 'match' function.
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/36a62ece5b0c48130537034d338b7e70af9e719d" rel="external nofollow">36a62ec</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/dc3d576d31fcac187df273f5668e24081bf91666" rel="external nofollow">dc3d576</a></span>
 </div>
       
     </div>

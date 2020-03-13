@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?36a62ec?1584059667">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?dc3d576?1584081886">
     
     
   </head>
@@ -1718,8 +1718,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positionutf8-haystack-needle" title="positionUTF8(haystack, needle)" class="md-nav__link">
-    positionUTF8(haystack, needle)
+  <a href="#positioncaseinsensitive" title="positionCaseInsensitive" class="md-nav__link">
+    positionCaseInsensitive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positionutf8" title="positionUTF8" class="md-nav__link">
+    positionUTF8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioncaseinsensitiveutf8" title="positionCaseInsensitiveUTF8" class="md-nav__link">
+    positionCaseInsensitiveUTF8
   </a>
   
 </li>
@@ -4102,8 +4116,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#positionutf8-haystack-needle" title="positionUTF8(haystack, needle)" class="md-nav__link">
-    positionUTF8(haystack, needle)
+  <a href="#positioncaseinsensitive" title="positionCaseInsensitive" class="md-nav__link">
+    positionCaseInsensitive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positionutf8" title="positionUTF8" class="md-nav__link">
+    positionUTF8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioncaseinsensitiveutf8" title="positionCaseInsensitiveUTF8" class="md-nav__link">
+    positionCaseInsensitiveUTF8
   </a>
   
 </li>
@@ -4259,12 +4287,177 @@
                   <h1 id="funktsii-poiska-v-strokakh">Функции поиска в строках<a class="headerlink" href="#funktsii-poiska-v-strokakh" title="Permanent link">&para;</a></h1>
 <p>Во всех функциях, поиск регистрозависимый по умолчанию. Существуют варианты функций для регистронезависимого поиска.</p>
 <h2 id="position">position(haystack, needle)<a class="headerlink" href="#position" title="Permanent link">&para;</a></h2>
-<p>Поиск подстроки <code>needle</code> в строке <code>haystack</code>.
-Возвращает позицию (в байтах) найденной подстроки, начиная с 1, или 0, если подстрока не найдена.</p>
-<p>Для поиска без учета регистра используйте функцию <code>positionCaseInsensitive</code>.</p>
-<h2 id="positionutf8-haystack-needle">positionUTF8(haystack, needle)<a class="headerlink" href="#positionutf8-haystack-needle" title="Permanent link">&para;</a></h2>
-<p>Так же, как <code>position</code>, но позиция возвращается в кодовых точках Unicode. Работает при допущении, что строка содержит набор байт, представляющий текст в кодировке UTF-8. Если допущение не выполнено -- то возвращает какой-нибудь результат (не кидает исключение).</p>
-<p>Для поиска без учета регистра используйте функцию <code>positionCaseInsensitiveUTF8</code>.</p>
+<p>Поиск подстроки <code>needle</code> в строке <code>haystack</code>.</p>
+<p>Возвращает позицию (в байтах) найденной подстроки в строке, начиная с 1, или 0, если подстрока не найдена.</p>
+<p>Работает при допущении, что строка содержит набор байт, представляющий текст в однобайтовой кодировке. Если допущение не выполнено — то возвращает неопределенный результат (не кидает исключение). Если символ может быть представлен с помощью двух байтов, он будет представлен двумя байтами и так далее.</p>
+<p>Для поиска без учета регистра используйте функцию <a href="#positioncaseinsensitive">positionCaseInsensitive</a>.</p>
+<p><strong>Синтаксис</strong></p>
+<div class="codehilite"><pre><span></span><span class="k">position</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Алиас: <code>locate(haystack, needle)</code>.</p>
+<p><strong>Параметры</strong></p>
+<ul>
+<li><code>haystack</code> — строка, по которой выполняется поиск. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+<li><code>needle</code> —  подстрока, которую необходимо найти. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+</ul>
+<p><strong>Возвращаемые значения</strong></p>
+<ul>
+<li>Начальная позиция в байтах (начиная с 1), если подстрока найдена.</li>
+<li>0, если подстрока не найдена.</li>
+</ul>
+<p>Тип: <code>Integer</code>.</p>
+<p><strong>Примеры</strong></p>
+<p>Фраза «Hello, world!» содержит набор байт, представляющий текст в однобайтовой кодировке. Функция возвращает ожидаемый результат:</p>
+<p>Запрос:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="k">position</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─position(&#39;Hello, world!&#39;, &#39;!&#39;)─┐
+│                             13 │
+└────────────────────────────────┘
+</pre></div>
+
+
+<p>Аналогичная фраза на русском содержит символы, которые не могут быть представлены в однобайтовой кодировке. Функция возвращает неожиданный результат (используйте функцию <a href="#positionutf8">positionUTF8</a> для символов, которые не могут быть представлены одним байтом):</p>
+<p>Запрос:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="k">position</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─position(&#39;Привет, мир!&#39;, &#39;!&#39;)─┐
+│                            21 │
+└───────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positioncaseinsensitive">positionCaseInsensitive<a class="headerlink" href="#positioncaseinsensitive" title="Permanent link">&para;</a></h2>
+<p>Такая же, как и <a href="#position">position</a>, но работает без учета регистра. Возвращает позицию в байтах найденной подстроки в строке, начиная с 1.</p>
+<p>Работает при допущении, что строка содержит набор байт, представляющий текст в однобайтовой кодировке. Если допущение не выполнено — то возвращает неопределенный результат (не кидает исключение). Если символ может быть представлен с помощью двух байтов, он будет представлен двумя байтами и так далее.</p>
+<p><strong>Синтаксис</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionCaseInsensitive</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Параметры</strong></p>
+<ul>
+<li><code>haystack</code> — строка, по которой выполняется поиск. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+<li><code>needle</code> —  подстрока, которую необходимо найти. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+</ul>
+<p><strong>Возвращаемые значения</strong></p>
+<ul>
+<li>Начальная позиция в байтах (начиная с 1), если подстрока найдена.</li>
+<li>0, если подстрока не найдена.</li>
+</ul>
+<p>Тип: <code>Integer</code>.</p>
+<p><strong>Пример</strong></p>
+<p>Запрос:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionCaseInsensitive</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─positionCaseInsensitive(&#39;Hello, world!&#39;, &#39;hello&#39;)─┐
+│                                                 1 │
+└───────────────────────────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positionutf8">positionUTF8<a class="headerlink" href="#positionutf8" title="Permanent link">&para;</a></h2>
+<p>Возвращает позицию (в кодовых точках Unicode) найденной подстроки в строке, начиная с 1.</p>
+<p>Работает при допущении, что строка содержит набор кодовых точек, представляющий текст в кодировке UTF-8. Если допущение не выполнено — то возвращает неопределенный результат (не кидает исключение). Если символ может быть представлен с помощью двух кодовых точек, он будет представлен двумя и так далее.</p>
+<p>Для поиска без учета регистра используйте функцию <a href="#positioncaseinsensitiveutf8">positionCaseInsensitiveUTF8</a>.</p>
+<p><strong>Синтаксис</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionUTF8</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Параметры</strong></p>
+<ul>
+<li><code>haystack</code> — строка, по которой выполняется поиск. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+<li><code>needle</code> —  подстрока, которую необходимо найти. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+</ul>
+<p><strong>Возвращаемые значения</strong></p>
+<ul>
+<li>Начальная позиция в кодовых точках Unicode (начиная с 1), если подстрока найдена.</li>
+<li>0, если подстрока не найдена.</li>
+</ul>
+<p>Тип: <code>Integer</code>.</p>
+<p><strong>Примеры</strong></p>
+<p>Фраза «Привет, мир!» содержит набор символов, каждый из которых можно представить с помощью одной кодовой точки. Функция возвращает ожидаемый результат:</p>
+<p>Запрос:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Привет, мир!&#39;, &#39;!&#39;)─┐
+│                                12 │
+└───────────────────────────────────┘
+</pre></div>
+
+
+<p>Фраза «Salut, étudiante!» содержит символ <code>é</code>, который может быть представлен одной кодовой точкой (<code>U+00E9</code>) или двумя (<code>U+0065U+0301</code>). Поэтому функция <code>positionUTF8()</code> может вернуть неожиданный результат:</p>
+<p>Запрос для символа <code>é</code>, который представлен одной кодовой точкой <code>U+00E9</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Salut, étudiante!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Result:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Salut, étudiante!&#39;, &#39;!&#39;)─┐
+│                                     17 │
+└────────────────────────────────────────┘
+</pre></div>
+
+
+<p>Запрос для символа <code>é</code>, который представлен двумя кодовыми точками <code>U+0065U+0301</code>:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionUTF8</span><span class="p">(</span><span class="s1">&#39;Salut, étudiante!&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─positionUTF8(&#39;Salut, étudiante!&#39;, &#39;!&#39;)─┐
+│                                     18 │
+└────────────────────────────────────────┘
+</pre></div>
+
+
+<h2 id="positioncaseinsensitiveutf8">positionCaseInsensitiveUTF8<a class="headerlink" href="#positioncaseinsensitiveutf8" title="Permanent link">&para;</a></h2>
+<p>Такая же, как и <a href="#positionutf8">positionUTF8</a>, но работает без учета регистра. Возвращает позицию (в кодовых точках Unicode) найденной подстроки в строке, начиная с 1.</p>
+<p>Работает при допущении, что строка содержит набор кодовых точек, представляющий текст в кодировке UTF-8. Если допущение не выполнено — то возвращает неопределенный результат (не кидает исключение). Если символ может быть представлен с помощью двух кодовых точек, он будет представлен двумя и так далее.</p>
+<p><strong>Синтаксис</strong></p>
+<div class="codehilite"><pre><span></span><span class="n">positionCaseInsensitiveUTF8</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Параметры</strong></p>
+<ul>
+<li><code>haystack</code> — строка, по которой выполняется поиск. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+<li><code>needle</code> —  подстрока, которую необходимо найти. <a href="../../syntax/#syntax-string-literal">Строка</a>.</li>
+</ul>
+<p><strong>Возвращаемые значения</strong></p>
+<ul>
+<li>Начальная позиция в байтах (начиная с 1), если подстрока найдена.</li>
+<li>0, если подстрока не найдена.</li>
+</ul>
+<p>Тип: <code>Integer</code>.</p>
+<p><strong>Пример</strong></p>
+<p>Запрос:</p>
+<div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="n">positionCaseInsensitiveUTF8</span><span class="p">(</span><span class="s1">&#39;Привет, мир!&#39;</span><span class="p">,</span> <span class="s1">&#39;Мир&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Ответ:</p>
+<div class="codehilite"><pre><span></span>┌─positionCaseInsensitiveUTF8(&#39;Привет, мир!&#39;, &#39;Мир&#39;)─┐
+│                                                  9 │
+└────────────────────────────────────────────────────┘
+</pre></div>
+
+
 <h2 id="multiSearchAllPositions">multiSearchAllPositions<a class="headerlink" href="#multiSearchAllPositions" title="Permanent link">&para;</a></h2>
 <p>The same as <a href="#position">position</a> but returns <code>Array</code> of positions (in bytes) of the found corresponding substrings in the string. Positions are indexed starting from 1.</p>
 <p>The search is performed on sequences of bytes without respect to string encoding and collation.</p>
@@ -4470,7 +4663,7 @@
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/36a62ece5b0c48130537034d338b7e70af9e719d" rel="external nofollow">36a62ec</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/dc3d576d31fcac187df273f5668e24081bf91666" rel="external nofollow">dc3d576</a></span>
 </div>
       
     </div>
