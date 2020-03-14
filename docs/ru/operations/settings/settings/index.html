@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?fb6e66b?1584150229">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?e8f6266?1584157523">
     
     
   </head>
@@ -3562,13 +3562,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#settings-join_any_take_last_row" title="join_any_take_last_row" class="md-nav__link">
-    join_any_take_last_row
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#join_use_nulls" title="join_use_nulls" class="md-nav__link">
     join_use_nulls
   </a>
@@ -3990,13 +3983,6 @@
         <li class="md-nav__item">
   <a href="#settings-max_network_bandwidth_for_all_users" title="max_network_bandwidth_for_all_users" class="md-nav__link">
     max_network_bandwidth_for_all_users
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#settings-allow_experimental_cross_to_join_conversion" title="allow_experimental_cross_to_join_conversion" class="md-nav__link">
-    allow_experimental_cross_to_join_conversion
   </a>
   
 </li>
@@ -4794,13 +4780,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#settings-join_any_take_last_row" title="join_any_take_last_row" class="md-nav__link">
-    join_any_take_last_row
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#join_use_nulls" title="join_use_nulls" class="md-nav__link">
     join_use_nulls
   </a>
@@ -5227,13 +5206,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#settings-allow_experimental_cross_to_join_conversion" title="allow_experimental_cross_to_join_conversion" class="md-nav__link">
-    allow_experimental_cross_to_join_conversion
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#settings-skip_unavailable_shards" title="skip_unavailable_shards" class="md-nav__link">
     skip_unavailable_shards
   </a>
@@ -5572,24 +5544,6 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <p>Возможные значения:</p>
 <ul>
 <li>0 — если в правой таблице несколько соответствующих строк, то присоединяется только первая найденная строка.</li>
-<li>1 — если в правой таблице несколько соответствующих строк, то присоединяется только последняя найденная строка.</li>
-</ul>
-<p>Значение по умолчанию: 0.</p>
-<p>См. также:</p>
-<ul>
-<li><a href="../../../query_language/select/#select-join">Секция JOIN</a></li>
-<li><a href="../../table_engines/join/">Движок таблиц Join</a></li>
-<li><a href="#settings-join_default_strictness">join_default_strictness</a></li>
-</ul>
-<h2 id="settings-join_any_take_last_row">join_any_take_last_row<a class="headerlink" href="#settings-join_any_take_last_row" title="Permanent link">&para;</a></h2>
-<p>Изменяет поведение операций, выполняемых со строгостью <code>ANY</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Внимание</p>
-<p>Настройка работает только для движка таблиц <a href="../../table_engines/join/">Join</a>.</p>
-</div>
-<p>Возможные значения:</p>
-<ul>
-<li>0 — если в правой таблице несколько соответствующих строк, то присоединяется только первая найденная.</li>
 <li>1 — если в правой таблице несколько соответствующих строк, то присоединяется только последняя найденная строка.</li>
 </ul>
 <p>Значение по умолчанию: 0.</p>
@@ -5979,22 +5933,6 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
 <li>0 — управление скоростью передачи данных отключено.</li>
 </ul>
 <p>Значение по умолчанию: 0.</p>
-<h2 id="settings-allow_experimental_cross_to_join_conversion">allow_experimental_cross_to_join_conversion<a class="headerlink" href="#settings-allow_experimental_cross_to_join_conversion" title="Permanent link">&para;</a></h2>
-<p>Включает или отключает:</p>
-<ol>
-<li>Перезапись запросов из синтаксиса с запятыми в синтаксис <code>JOIN ON/USING</code>. Если значение параметра равно 0, ClickHouse не обрабатывает запросы с синтаксисом, использующим запятые, и генерирует исключение.</li>
-<li>Преобразование <code>CROSS JOIN</code> в <code>INNER JOIN</code>, если условия объединения таблиц это позволяют.</li>
-</ol>
-<p>Возможные значения:</p>
-<ul>
-<li>0 — выключена.</li>
-<li>1 — включена.</li>
-</ul>
-<p>Значение по умолчанию: 1.</p>
-<p>См. также</p>
-<ul>
-<li><a href="../../../query_language/select/#select-join">Множественный JOIN</a></li>
-</ul>
 <h2 id="settings-skip_unavailable_shards">skip_unavailable_shards<a class="headerlink" href="#settings-skip_unavailable_shards" title="Permanent link">&para;</a></h2>
 <p>Включает или отключает тихий пропуск недоступных шардов.</p>
 <p>Шард считается недоступным, если все его реплики недоступны. Реплика недоступна в следующих случаях:</p>
@@ -6232,7 +6170,7 @@ Code: 27. DB::Exception: Cannot parse input: expected ) before: now()): (at row 
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/fb6e66bc10672fac504195b98747f4d77ed6a555" rel="external nofollow">fb6e66b</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/e8f62660fd53b2a51529236264d0703cf863cb25" rel="external nofollow">e8f6266</a></span>
 </div>
       
     </div>

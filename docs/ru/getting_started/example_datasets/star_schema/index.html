@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?fb6e66b?1584150229">
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css?e8f6266?1584157523">
     
     
   </head>
@@ -4058,7 +4058,7 @@ $ clickhouse-client --query <span class="s2">&quot;INSERT INTO lineorder FORMAT 
 
 
 <p>Конвертация схемы-звезда в денормализованную плоскую схему:</p>
-<div class="codehilite"><pre><span></span><span class="k">SET</span> <span class="n">max_memory_usage</span> <span class="o">=</span> <span class="mi">20000000000</span><span class="p">,</span> <span class="n">allow_experimental_multiple_joins_emulation</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><span class="k">SET</span> <span class="n">max_memory_usage</span> <span class="o">=</span> <span class="mi">20000000000</span><span class="p">;</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">lineorder_flat</span>
 <span class="n">ENGINE</span> <span class="o">=</span> <span class="n">MergeTree</span>
 <span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">toYear</span><span class="p">(</span><span class="n">LO_ORDERDATE</span><span class="p">)</span>
@@ -4405,7 +4405,7 @@ $ clickhouse-client --query <span class="s2">&quot;INSERT INTO lineorder FORMAT 
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/fb6e66bc10672fac504195b98747f4d77ed6a555" rel="external nofollow">fb6e66b</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/e8f62660fd53b2a51529236264d0703cf863cb25" rel="external nofollow">e8f6266</a></span>
 </div>
       
     </div>

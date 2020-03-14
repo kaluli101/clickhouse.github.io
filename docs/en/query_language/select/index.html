@@ -52,7 +52,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?fb6e66b?1584150229">
+      <link rel="stylesheet" href="../../assets/stylesheets/custom.css?e8f6266?1584157523">
     
     
   </head>
@@ -5131,7 +5131,7 @@ If a query does not list any columns (for example, <code>SELECT count() FROM t</
 </pre></div>
 
 
-<p>You can use comma-separated lists of tables in the <code>FROM</code> clause. This works only with the <a href="../../operations/settings/settings/#settings-allow_experimental_cross_to_join_conversion">allow_experimental_cross_to_join_conversion = 1</a> setting. For example:</p>
+<p>You can use comma-separated lists of tables in the <code>FROM</code> clause. For example:</p>
 <div class="codehilite"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span> <span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">a</span> <span class="k">AND</span> <span class="n">t1</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">t3</span><span class="p">.</span><span class="n">a</span>
 </pre></div>
 
@@ -5863,7 +5863,7 @@ For example, <code>GROUP BY 1, 2</code> will be interpreted as grouping by const
       </div>
       
         <div class="md-footer-social">
-  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/fb6e66bc10672fac504195b98747f4d77ed6a555" rel="external nofollow">fb6e66b</a></span>
+  <span class="md-footer-copyright__highlight">Built from <a href="https://github.com/ClickHouse/ClickHouse/commit/e8f62660fd53b2a51529236264d0703cf863cb25" rel="external nofollow">e8f6266</a></span>
 </div>
       
     </div>
